@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>SwipeDrawer</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,user-scalable=no">
+	<link href="/libs/css/base.min.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	<header class="header">
+		<div class="main">
+			<div class="logo">
+				<a href="/SwipeDrawer_en/"><h1>SwipeDrawer</h1></a>
+			</div>
+			<div class="menu">
+				<ul>
+					<li><a href="/SwipeDrawer_en/" title="Use Docs">Docs</a></li>
+					<li class="cur"><a href="/SwipeDrawer_en/code.html" title="Detailed Docs">Detailed</a></li>
+					<li><a href="/SwipeDrawer_en/pics.html" title="Picture Preview">Picture</a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github Issues">Issues</a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github Project Code">Project Code</a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.0/demo.apk" title="Download Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
+					<li class="r"><a href="/SwipeDrawer/" title="切换中文版"><img src="/libs/images/Language-Chinese.svg"></a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div class="head-title">
+		<div class="main">
+			<div class="title">Detailed Docs</div>
+			<div class="desc">Android SwipeDrawer sliding drawer library</div>
+		</div>
+	</div>
+	<div class="main">
+		<div class="main-left">
+			<div class="tree">
+				<ul>
+					<li class="title" data-btn="A0"><span>Attribute explain</span></li>
+					<li data-btn="A1"><span>mode</span></li>
+					<li data-btn="A2"><span>open</span></li>
+					<li data-btn="A3"><span>mask</span></li>
+					<li data-btn="A4"><span>mainLayout</span></li>
+					<li data-btn="A5"><span>leftLayout</span></li>
+					<li data-btn="A6"><span>topLayout</span></li>
+					<li data-btn="A7"><span>rightLayout</span></li>
+					<li data-btn="A8"><span>bottomLayout</span></li>
+					<li data-btn="A9"><span>mainType</span></li>
+					<li data-btn="A10"><span>leftType</span></li>
+					<li data-btn="A11"><span>topType</span></li>
+					<li data-btn="A12"><span>rightType</span></li>
+					<li data-btn="A13"><span>bottomType</span></li>
+					<li data-btn="A14"><span>leftMode</span></li>
+					<li data-btn="A15"><span>topMode</span></li>
+					<li data-btn="A16"><span>rightMode</span></li>
+					<li data-btn="A17"><span>bottomMode</span></li>
+					<li data-btn="A18"><span>mainOpen</span></li>
+					<li data-btn="A19"><span>parentDrawer</span></li>
+					<li data-btn="A20"><span>mainScroll</span></li>
+					<li data-btn="A21"><span>leftScroll</span></li>
+					<li data-btn="A22"><span>topScroll</span></li>
+					<li data-btn="A23"><span>rightScroll</span></li>
+					<li data-btn="A24"><span>bottomScroll</span></li>
+					<li data-btn="A25"><span>leftDragOpen</span></li>
+					<li data-btn="A26"><span>topDragOpen</span></li>
+					<li data-btn="A27"><span>rightDragOpen</span></li>
+					<li data-btn="A28"><span>bottomDragOpen</span></li>
+					<li data-btn="A29"><span>showLayout</span></li>
+					<li data-btn="A30"><span>autoClose</span></li>
+					<li data-btn="A31"><span>maskClose</span></li>
+					<li data-btn="A32"><span>maskColor</span></li>
+					<li data-btn="A33"><span>dragClose</span></li>
+					<li data-btn="A34"><span>scrollOuterDrag</span></li>
+					<li data-btn="A35"><span>shrinkRange</span></li>
+					<li data-btn="A36"><span>dragDamping</span></li>
+					<li data-btn="A37"><span>dragRange</span></li>
+					<li data-btn="A38"><span>maxDragSize</span></li>
+					<li data-btn="A39"><span>duration</span></li>
+					<li data-btn="A40"><span>interpolator</span></li>
+					<li class="title" data-btn="B0"><span>Call interface</span></li>
+					<li data-btn="B1"><span>OnDrawerState</span></li>
+					<li data-btn="B2"><span>OnDrawerSwitch</span></li>
+					<li data-btn="B3"><span>OnDrawerChange</span></li>
+					<li class="title" data-btn="C0"><span>Call method</span></li>
+					<li data-btn="C1"><span>openDrawer</span></li>
+					<li data-btn="C2"><span>closeDrawer</span></li>
+					<li data-btn="C3"><span>toggleDrawer</span></li>
+					<li class="title" data-btn="D0"><span>Static method</span></li>
+					<li data-btn="D1"><span>setAllIntercept</span></li>
+					<li data-btn="D2"><span>getAllIntercept</span></li>
+					<li data-btn="D3"><span>getParentDrawer</span></li>
+					<li class="title" data-btn="E0"><span>Other</span></li>
+					<li data-btn="E1"><span>DrawerHolder</span></li>
+				</ul>
+			</div>
+			<div class="mask"></div>
+		</div>
+		<div class="main-right">
+			<div class="content">
+				<h1 data-tab="A0">Attribute explain</h1>
+					<h2 data-tab="A1">mode</h2>
+					<p>There are three open modes: </p>
+					<ul>
+						<li><label>drawer</label>: Drawer mode, The main layout moves simultaneously with the drawer layout<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01df35d69120a8c91c.gif"></div></li>
+						<li><label>cover</label>: Cover mode, Drawer layout move only<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01761f17c7f1f6bc7f.gif"></div></li>
+						<li><label>fixed</label>: Fixed mode, Main layout move only<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01891cb8d6f671b918.gif"></div></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A2">open</h2>
+					<p>Initialization status, The specified direction is turned on by default: 
+					<ul>
+						<li><label>left</label>: Left is on by default<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0151e703c926e58f2d.jpg"></div></li>
+						<li><label>top</label>: Top is on by default<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01db31abfa29e039e5.jpg"></div></li>
+						<li><label>right</label>: Right is on by default<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t016b0b259c09c5d697.jpg"></div></li>
+						<li><label>bottom</label>: Bottom is on by default<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0100f400d09e93eb75.jpg"></div></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A3">mask</h2>
+					<p>Background mask: </p>
+					<ul>
+						<li><label>none</label>: Not open<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t010e78f91e20d39e3a.gif"></div></li>
+						<li><label>general</label>: Fixed color<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01f4783bc3115c9c02.gif"></div></li>
+						<li><label>gradual</label>: Gradual depth<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0120d45ed1909b1394.gif"></div></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A4">mainLayout</h2>
+					<p>Specifies the main layout ID: </p>
+					<ul>
+						<li>If this attribute is not specified, It defaults to the first sub layout with no ID specified</li>
+					</ul>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-red">app:mainLayout</span>=<span class="hljs-string">&quot;@+id/mainDrawer&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/mainDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FF0000&quot;</span> /&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A5">leftLayout</h2>
+					<p>Specifies the left layout ID: </p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-red">app:leftLayout</span>=<span class="hljs-string">&quot;@+id/leftDrawer&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/leftDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FF0000&quot;</span> /&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A6">topLayout</h2>
+					<p>Specifies the top layout ID: </p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-red">app:topLayout</span>=<span class="hljs-string">&quot;@+id/topDrawer&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/topDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FF0000&quot;</span> /&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A7">rightLayout</h2>
+					<p>Specifies the right layout ID: </p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-red">app:rightLayout</span>=<span class="hljs-string">&quot;@+id/rightDrawer&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/rightDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FF0000&quot;</span> /&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A8">bottomLayout</h2>
+					<p>Specifies the bottom layout ID: </p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-red">app:bottomLayout</span>=<span class="hljs-string">&quot;@+id/bottomDrawer&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/bottomDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FF0000&quot;</span> /&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A9">mainType</h2>
+					<p>Main layout type: </p>
+					<ul>
+						<li><label>view</label>: Non sliding layout, The default is this item</li>
+						<li><label>scrollY</label>: Vertical sliding layout, Must be a direct child, For children<label>mainScroll</label>Specify ID</li>
+						<li><label>scrollX</label>: Horizontal sliding layout, Must be a direct child, For children<label>mainScroll</label>Specify ID</li>
+					</ul>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:mainLayout</span>=<span class="hljs-string">&quot;@+id/mainDrawer&quot;</span>
+    <span class="hljs-red">app:mainType</span>=<span class="hljs-string">&quot;scrollY&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ScrollView</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/mainDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FF0000&quot;</span>&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ScrollView</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A10">leftType</h2>
+					<p>Left layout type: </p>
+					<ul>
+						<li><label>view</label>: Non sliding layout, The default is this item</li>
+						<li><label>scrollY</label>: Vertical sliding layout, Must be a direct child, For children<label>leftScroll</label>Specify ID</li>
+						<li><label>scrollX</label>: Horizontal sliding layout, Must be a direct child, For children<label>leftScroll</label>Specify ID</li>
+					</ul>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:leftLayout</span>=<span class="hljs-string">&quot;@+id/leftDrawer&quot;</span>
+    <span class="hljs-red">app:leftType</span>=<span class="hljs-string">&quot;scrollY&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">HorizontalScrollView</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/leftDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FF0000&quot;</span>&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">HorizontalScrollView</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A11">topType</h2>
+					<p>Top layout type: </p>
+					<ul>
+						<li><label>view</label>: Non sliding layout, The default is this item</li>
+						<li><label>scrollY</label>: Vertical sliding layout, Must be a direct child, For children<label>topScroll</label></label>Specify ID</li>
+						<li><label>scrollX</label>: Horizontal sliding layout, Must be a direct child, For children<label>topScroll</label>Specify ID</li>
+					</ul>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:topLayout</span>=<span class="hljs-string">&quot;@+id/topDrawer&quot;</span>
+    <span class="hljs-red">app:topType</span>=<span class="hljs-string">&quot;scrollY&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ScrollView</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/topDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FF0000&quot;</span>&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ScrollView</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A12">rightType</h2>
+					<p>Right layout type: </p>
+					<ul>
+						<li><label>view</label>: Non sliding layout, The default is this item</li>
+						<li><label>scrollY</label>: Vertical sliding layout, Must be a direct child, For children<label>rightScroll</label></label>Specify ID</li>
+						<li><label>scrollX</label>: Horizontal sliding layout, Must be a direct child, For children<label>rightScroll</label>Specify ID</li>
+					</ul>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:rightLayout</span>=<span class="hljs-string">&quot;@+id/rightDrawer&quot;</span>
+    <span class="hljs-red">app:rightType</span>=<span class="hljs-string">&quot;scrollY&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">HorizontalScrollView</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/rightDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FF0000&quot;</span>&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">HorizontalScrollView</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A13">bottomType</h2>
+					<p>Bottom layout type: </p>
+					<ul>
+						<li><label>view</label>: Non sliding layout, The default is this item</li>
+						<li><label>scrollY</label>: Vertical sliding layout, Must be a direct child, For children<label>bottomScroll</label>Specify ID</li>
+						<li><label>scrollX</label>: Horizontal sliding layout, Must be a direct child, For children<label>bottomScroll</label>Specify ID</li>
+					</ul>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:bottomLayout</span>=<span class="hljs-string">&quot;@+id/bottomDrawer&quot;</span>
+    <span class="hljs-red">app:bottomType</span>=<span class="hljs-string">&quot;scrollY&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ScrollView</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/bottomDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FF0000&quot;</span>&gt;</span>
+        ...
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ScrollView</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A14">leftMode</h2>
+					<ul>
+						<li>This attribute specifies the left direction on mode</li>
+						<li>If it is not set, it inherits the opening mode of <label>mode</label></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A15">topMode</h2>
+					<ul>
+						<li>This attribute specifies the top direction on mode</li>
+						<li>If it is not set, it inherits the opening mode of <label>mode</label></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A16">rightMode</h2>
+					<ul>
+						<li>This attribute specifies the right direction on mode</li>
+						<li>If it is not set, it inherits the opening mode of <label>mode</label></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A17">bottomMode</h2>
+					<ul>
+						<li>This attribute specifies the bottom direction on mode</li>
+						<li>If it is not set, it inherits the opening mode of <label>mode</label></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A18">mainOpen</h2>
+					<p>Main layout touch event after opening: This property setting is invalid when the mask is turned on</p>
+					<ul>
+						<li><label>none</label>: Unshielded<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01fd0d27d987a5cc09.gif"></div></li>
+						<li><label>click</label>: Click only<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t018b376dfcdf18bbe7.gif"></div></li>
+						<li><label>intercept</label>: Disable all touch events<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t018dc1e09d53e7ce63.gif"></div></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A19">parentDrawer</h2>
+					<p>Specifies the <label>SwipeDrawer</label> layout ID of the previous level, Use when nesting: more layers of nesting are used to push in</p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/rootSwipe&quot;</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:mainLayout</span>=<span class="hljs-string">&quot;@+id/mainDrawer&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/mainDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FF0000&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">app:mainLayout</span>=<span class="hljs-string">&quot;@+id/sonMainDrawer&quot;</span>
+            <span class="hljs-red">app:parentDrawer</span>=<span class="hljs-string">&quot;@+id/rootSwipe&quot;</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+                <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/sonMainDrawer&quot;</span>
+                <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+                <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+                <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#3F51B5&quot;</span> /&gt;</span>
+            ...
+        <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A20">mainScroll</h2>
+					<p>Specifies the sliding layout ID under the main layout: If the sub layout has a sliding layout and the sliding direction is consistent with <label>SwipeDrawer</label>, this attribute should be set to solve the problem of sliding priority</p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:mainLayout</span>=<span class="hljs-string">&quot;@+id/mainDrawer&quot;</span>
+    <span class="hljs-red">app:mainScroll</span>=<span class="hljs-string">&quot;@+id/mainScroll&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/mainDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ListView</span>
+            <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/mainScroll&quot;</span>
+            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A21">leftScroll</h2>
+					<p>Specifies the sliding layout ID under the left layout: If the sub layout has a sliding layout and the sliding direction is consistent with <label>SwipeDrawer</label>, this attribute should be set to solve the problem of sliding priority</p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:leftLayout</span>=<span class="hljs-string">&quot;@+id/leftDrawer&quot;</span>
+    <span class="hljs-red">app:leftScroll</span>=<span class="hljs-string">&quot;@+id/leftScroll&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/leftDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">HorizontalScrollView</span>
+            <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/leftScroll&quot;</span>
+            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span>
+            ...
+        <span class="hljs-tag">&lt;/<span class="hljs-name">HorizontalScrollView</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A22">topScroll</h2>
+					<p>Specifies the sliding layout ID under the top layout: If the sub layout has a sliding layout and the sliding direction is consistent with <label>SwipeDrawer</label>, this attribute should be set to solve the problem of sliding priority</p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:topLayout</span>=<span class="hljs-string">&quot;@+id/topDrawer&quot;</span>
+    <span class="hljs-red">app:topScroll</span>=<span class="hljs-string">&quot;@+id/topScroll&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/topDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ScrollView</span>
+            <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/topScroll&quot;</span>
+            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span>
+            ...
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ScrollView</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A23">rightScroll</h2>
+					<p>Specifies the sliding layout ID under the right layout: If the sub layout has a sliding layout and the sliding direction is consistent with <label>SwipeDrawer</label>, this attribute should be set to solve the problem of sliding priority</p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:rightLayout</span>=<span class="hljs-string">&quot;@+id/rightDrawer&quot;</span>
+    <span class="hljs-red">app:rightScroll</span>=<span class="hljs-string">&quot;@+id/rightScroll&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/rightDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">HorizontalScrollView</span>
+            <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/rightScroll&quot;</span>
+            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span>
+            ...
+        <span class="hljs-tag">&lt;/<span class="hljs-name">HorizontalScrollView</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A24">bottomScroll</h2>
+					<p>Specifies the sliding layout ID under the bottom layout: If the sub layout has a sliding layout and the sliding direction is consistent with <label>SwipeDrawer</label>, this attribute should be set to solve the problem of sliding priority</p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:bottomLayout</span>=<span class="hljs-string">&quot;@+id/bottomDrawer&quot;</span>
+    <span class="hljs-red">app:bottomScroll</span>=<span class="hljs-string">&quot;@+id/bottomScroll&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/bottomDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ScrollView</span>
+            <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/bottomScroll&quot;</span>
+            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span>
+            ...
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ScrollView</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A25">leftDragOpen</h2>
+					<p>Left layout drag open: When set to <label>false</label>, the left layout cannot be opened by dragging, However, closing is not subject to this restriction, Default value: <label>true</label></p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-red">app:leftDragOpen</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A26">topDragOpen</h2>
+					<p>Top layout drag open: When set to <label>false</label>, the top layout cannot be opened by dragging, However, closing is not subject to this restriction, Default value: <label>true</label></p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-red">app:topDragOpen</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A27">rightDragOpen</h2>
+					<p>Right layout drag open: When set to <label>false</label>, the right layout cannot be opened by dragging, However, closing is not subject to this restriction, Default value: <label>true</label></p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-red">app:rightDragOpen</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A28">bottomDragOpen</h2>
+					<p>Bottom layout drag open: When set to <label>false</label>, the bottom layout cannot be opened by dragging, However, closing is not subject to this restriction, Default value: <label>true</label></p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-red">app:bottomDragOpen</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A29">showLayout</h2>
+					<p>Whether the layout of non current operation is hidden, Default value<label>false</label></p>
+					<p>The figure shows <label>mode</label> in fixed mode, 50% demonstration of overall layout transparency</p>
+					<ul>
+						<li><label>true</label>: show<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01910aad773e218d85.gif"></div></li>
+						<li><label>false</label>: hide<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t012bb4d200a124a054.gif"></div></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A30">autoClose</h2>
+					<p>Close other <label>SwipeDrawer</label> after opening: Set to <label>true</label>, and other <label>SwipeDrawer</label> whose <label>autoClose</label> is <label>true</label> will be closed after opening</p>
+					<ul>
+						<li><label>true</label>: Auto off<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t014e66921fe0b373ff.gif"></div></li>
+						<li><label>false</label>: Default value, Multiple can be opened at the same time<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01b68f98bbc9b6896a.gif"></div></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A31">maskClose</h2>
+					<p>Click the mask and close <label>SwipeDrawer</label>: Set to <label>true</label>, and click the mask background after opening <label>mask</label> to close the current <label>SwipeDrawer</label></p>
+					<ul>
+						<li><label>true</label>: Click close<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t019ea3e2b8816ac646.gif"></div></li>
+						<li><label>false</label>: Default value, No operation</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A32">maskColor</h2>
+					<p>Mask color: The default color is <label>#80000000</label></p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:mask</span>=<span class="hljs-string">&quot;gradual&quot;</span>
+    <span class="hljs-red">app:maskColor</span>=<span class="hljs-string">&quot;#B3FF0000&quot;</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A33">dragClose</h2>
+					<p>Allow drag close: And<label>leftDragOpen</label>、<label>topDragOpen</label>、<label>rightDragOpen</label>、<label>bottomDragOpen</label>Drag open is the same</p>
+					<p>If it is set to <label>false</label> it cannot be closed by dragging, However, opening is not subject to this restriction, Default value: <label>true</label></p>
+					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-red">app:dragClose</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+					<br/><br/>
+					<h2 data-tab="A34">scrollOuterDrag</h2>
+					<p>Is dragging allowed outside the sliding layout: Whether the layout other than the sub sliding layout in all directions of the drawer layout can be closed by dragging, Default value: <label>false</label></p>
+					<ul>
+						<li><label>true</label>: Under any circumstances<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0184184b4f523ce624.gif"></div></li>
+						<li><label>false</label>: Only when the sub sliding layout reaches the top or cannot slide at all can it be allowed<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t019dbea0eb36fa3b62.gif"></div></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A35">shrinkRange</h2>
+					<p>Drag distance: <map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01fde8e23b90ca4fc2.gif"></span></p>
+					<ul>
+						<li>Drag direction height / width divided by <label>shrinkRange</label>, It will not be opened or closed until the drag reaches the distance, otherwise it will return to the original state</li>
+						<li>Default value: <label>5</label>, Drag direction 1 / 5 of height / width</li>
+						<li><label>0</label>: Can drag, But it will not turn on or off</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A36">dragDamping</h2>
+					<p>Drag dmping: 0-9<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t018d3aa4860ec083ac.gif"></span></p>
+					<ul>
+						<li>The smaller the value, the greater the dmping</li>
+						<li>Default value: <label>10</label>, No dmping</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A37">dragRange</h2>
+					<p>Edge drag: <map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01d4db1d88998f2276.gif"></span></p>
+					<ul>
+						<li>Value type: <label>dip</label>, After setting, the dragging and pressing position must be the edge position of <label>dragRange</label> dip before dragging</li>
+						<li>Default value: <label>0</label>, All bureau drag</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A38">maxDragSize</h2>
+					<p>Maximum drag height / width: <map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t014da22f9cf70514da.gif"></span></p>
+					<ul>
+						<li>Value type: <label>dip</label>, After setting, you can drag it to the distance set by <label>maxDragSize</label></li>
+						<li>Default value: <label>0</label>, Layout height / width</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A39">duration</h2>
+					<p>Animation speed: <map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t014e602378c6d27e87.gif"></span></p>
+					<ul>
+						<li>Value type: <label>int</label></li>
+						<li>Default value: <label>200</label></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A40">interpolator</h2>
+					<p>Animation interpolator: </p>
+					<ul>
+						<li>Slow down: <label>@android:anim/decelerate_interpolator</label><map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01097f6109d9290f98.gif"></span></li>
+						<li>Uniform speed: <label>@android:anim/linear_interpolator</label><map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01e07619807d5584e9.gif"></span></li>
+						<li>Pinball effect: <label>@android:anim/bounce_interpolator</label><map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01a2d2d47d892452a3.gif"></span></li>
+						<li>Default value: <label>@android:anim/accelerate_decelerate_interpolator</label>Accelerate first and then slow down</li>
+					</ul>
+					<br/><br/>
+				<h1 data-tab="B0">Call Interface</h1>
+				<h2 data-tab="B1">OnDrawerState</h2>
+				<p>Listening start, move, start, close and cancel callback</p>
+				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
+swipeDrawer.setOnDrawerState(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OnDrawerState</span>() {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onStart</span><span class="hljs-params">(<span class="hljs-type">int</span> type)</span> {
+        <span class="hljs-comment">// Callback at drag start</span>
+        <span class="hljs-comment">// type: Returns the direction of the current operation</span>
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onMove</span><span class="hljs-params">(<span class="hljs-type">int</span> type, <span class="hljs-type">float</span> progress)</span> {
+        <span class="hljs-comment">// Callback when dragging and moving</span>
+        <span class="hljs-comment">// type: Returns the direction of the current operation</span>
+        <span class="hljs-comment">// progress: Returns to open progress 0 - 1</span>
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onOpen</span><span class="hljs-params">(<span class="hljs-type">int</span> type)</span> {
+        <span class="hljs-comment">// Callback on open</span>
+        <span class="hljs-comment">// type: Returns the direction of the current operation</span>
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onClose</span><span class="hljs-params">(<span class="hljs-type">int</span> type)</span> {
+        <span class="hljs-comment">// Callback on close</span>
+        <span class="hljs-comment">// type: Returns the direction of the current operation</span>
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onCancel</span><span class="hljs-params">(<span class="hljs-type">int</span> type)</span> {
+        <span class="hljs-comment">// Callback when dragging does not reach the opening or closing distance</span>
+        <span class="hljs-comment">// type: Returns the direction of the current operation</span>
+    }
+});</code></pre>
+				<br/><br/>
+				<h2 data-tab="B2">OnDrawerSwitch</h2>
+				<p>Listening on / off callback</p>
+				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
+swipeDrawer.setOnDrawerSwitch(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OnDrawerSwitch</span>() {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onOpen</span><span class="hljs-params">(SwipeDrawer view)</span> {
+        <span class="hljs-comment">// Callback on open</span>
+        <span class="hljs-comment">// view: Returns SwipeDrawer of the current operation</span>
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onClose</span><span class="hljs-params">(SwipeDrawer view)</span> {
+        <span class="hljs-comment">// Callback on close</span>
+        <span class="hljs-comment">// view: Returns SwipeDrawer of the current operation</span>
+    }
+});</code></pre>
+				<br/><br/>
+				<h2 data-tab="B3">OnDrawerChange</h2>
+				<p>Monitor changes and return various statuses by parameters</p>
+				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
+swipeDrawer.setOnDrawerChange(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OnDrawerChange</span>() {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onChange</span><span class="hljs-params">(SwipeDrawer view, <span class="hljs-type">int</span> state, <span class="hljs-type">float</span> progress)</span> {
+        <span class="hljs-comment">// view: Returns SwipeDrawer of the current operation</span>
+        <span class="hljs-comment">// state: Returns to current status</span>
+        <span class="hljs-comment">// progress: Returns to open progress 0 - 1</span>
+        <span class="hljs-keyword">switch</span> (state) {
+            <span class="hljs-keyword">case</span> SwipeDrawer.STATE_START:
+                <span class="hljs-comment">// Callback at drag start</span>
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> SwipeDrawer.STATE_OPEN:
+                <span class="hljs-comment">// Callback on open</span>
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> SwipeDrawer.STATE_CLOSE :
+                <span class="hljs-comment">// Callback on close</span>
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> SwipeDrawer.STATE_PROGRESS :
+                <span class="hljs-comment">// Callback when dragging and moving, progress: Get progress</span>
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> SwipeDrawer.STATE_ANIM_OVER:
+                <span class="hljs-comment">// Callback at the end of animation execution</span>
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> SwipeDrawer.STATE_CALL_OPEN:
+                <span class="hljs-comment">// Callback when openDrawer method is called to open</span>
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> SwipeDrawer.STATE_CALL_CLOSE:
+                <span class="hljs-comment">// Callback on closing by calling closeDrawer method</span>
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> SwipeDrawer.STATE_CANCEL:
+                <span class="hljs-comment">// Callback when dragging does not reach the opening or closing distance</span>
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> SwipeDrawer.STATE_DRAG_INTO:
+                <span class="hljs-comment">// Callback when drag exceeds shrinkRange distance</span>
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> SwipeDrawer.STATE_DRAG_OUT:
+                <span class="hljs-comment">// Callback when the drag does not exceed the shrinkRange distance</span>
+                <span class="hljs-keyword">break</span>;
+        }
+    }
+});</code></pre>
+				<br/><br/>
+				<h1 data-tab="C0">Call method</h1>
+				<h2 data-tab="C1">openDrawer</h2>
+				<p>Call open method</p>
+				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
+
+<span class="hljs-comment">// Open left direction</span>
+swipeDrawer.openDrawer(SwipeDrawer.DIRECTION_LEFT);
+
+<span class="hljs-comment">// Open top direction, Do not use animation</span>
+swipeDrawer.openDrawer(SwipeDrawer.DIRECTION_TOP, <span class="hljs-literal">false</span>);
+
+<span class="hljs-comment">// Open right direction, Use animation, Do not use callback interface</span>
+swipeDrawer.openDrawer(SwipeDrawer.DIRECTION_RIGHT, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);</code></pre>
+				<br/><br/>
+				<h2 data-tab="C2">closeDrawer</h2>
+				<p>调用关闭方法</p>
+				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
+
+<span class="hljs-comment">// Turn off the opened direction</span>
+swipeDrawer.closeDrawer();
+
+<span class="hljs-comment">// Turn off the opened direction, Do not use animation</span>
+swipeDrawer.closeDrawer(<span class="hljs-literal">false</span>);
+
+<span class="hljs-comment">// Turn off the opened direction, Use animation, Do not use callback interface</span>
+swipeDrawer.closeDrawer(<span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);
+
+<span class="hljs-comment">// Close left direction</span>
+swipeDrawer.closeDrawer(SwipeDrawer.DIRECTION_LEFT);
+
+<span class="hljs-comment">// Close top direction, Do not use animation</span>
+swipeDrawer.closeDrawer(SwipeDrawer.DIRECTION_TOP, <span class="hljs-literal">false</span>);
+
+<span class="hljs-comment">// Close right direction, Use animation, Do not use callback interface</span>
+swipeDrawer.closeDrawer(SwipeDrawer.DIRECTION_RIGHT, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);</code></pre>
+				<br/><br/>
+				<h2 data-tab="C3">toggleDrawer</h2>
+				<p>Call the open or close method</p>
+				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
+
+<span class="hljs-comment">// Open or close left direction</span>
+swipeDrawer.toggleDrawer(SwipeDrawer.DIRECTION_LEFT);
+
+<span class="hljs-comment">// Open or close top direction, Do not use animation</span>
+swipeDrawer.toggleDrawer(SwipeDrawer.DIRECTION_TOP, <span class="hljs-literal">false</span>);
+
+<span class="hljs-comment">// Open or close right direction, Use animation, Do not use callback interface</span>
+swipeDrawer.toggleDrawer(SwipeDrawer.DIRECTION_RIGHT, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);</code></pre>
+				<br/><br/>
+				<h1 data-tab="D0">Static method</h1>
+				<h2 data-tab="D1">setAllIntercept</h2>
+				<p>Set to mask all <label>SwipeDrawer</label> touch events</p>
+				<pre><code class="hljs"><span class="hljs-comment">// Mask all SwipeDrawer touch events</span>
+SwipeDrawer.setAllIntercept(<span class="hljs-literal">true</span>);
+
+<span class="hljs-comment">// Unshielded</span>
+SwipeDrawer.setAllIntercept(<span class="hljs-literal">false</span>);</code></pre>
+				<br/><br/>
+				<h2 data-tab="D2">getAllIntercept</h2>
+				<p>Get whether the <label>SwipeDrawer</label> touch event is shielded</p>
+				<pre><code class="hljs"><span class="hljs-comment">// Gets whether the touch event is masked</span>
+<span class="hljs-keyword">if</span> (SwipeDrawer.getAllIntercept()) {
+    <span class="hljs-comment">// Shielded</span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// No shielding</span>
+}</code></pre>
+				<br/><br/>
+				<h2 data-tab="D3">getParentDrawer</h2>
+				<p>Get the parent of view <label>SwipeDrawer</label></p>
+				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">View</span> <span class="hljs-variable">view</span> <span class="hljs-operator">=</span> findViewById(R.id.view);
+<span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">getSwipeDrawer</span> <span class="hljs-operator">=</span> SwipeDrawer.getParentDrawer(view);
+<span class="hljs-keyword">if</span> (getSwipeDrawer != <span class="hljs-literal">null</span>) {
+    <span class="hljs-comment">// getSwipeDrawer is the parent of view</span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// not found</span>
+}</code></pre>
+				<br/><br/>
+				<h1 data-tab="E0">Other</h1>
+				<h2 data-tab="E1">DrawerHolder</h2>
+				<p>The <label>SwipeDrawer</label>class is used to save layouts with recycling mechanisms such as <label>ListView</label>, <label>RecyclerView</label> when <label>item</label> is not automatically closed</p>
+				<pre><strong>Use of DrawerHolder class: </strong><code class="hljs"><span class="hljs-type">DrawerHolder</span> <span class="hljs-variable">drawerHolder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DrawerHolder</span>();
+
+<span class="hljs-comment">// drawerItem: Pass the SwipeDrawer layout of the item</span>
+<span class="hljs-comment">// bindHolder: Pass unique object</span>
+drawerHolder.bindHolder(drawerItem, dataItem);
+
+<span class="hljs-comment">// Clear all saved data, And close the open SwipeDrawer</span>
+drawerHolder.clearHolder();
+
+<span class="hljs-comment">// Clear all saved data</span>
+drawerHolder.clear();</code></pre>
+				<pre><strong>ListView Call example: </strong><code class="hljs"><span class="hljs-keyword">private</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ListAdapter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ArrayAdapter</span>&lt;String&gt; {
+    <span class="hljs-keyword">private</span> Context context;
+    <span class="hljs-keyword">private</span> List&lt;String&gt; list;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">DrawerHolder</span> <span class="hljs-variable">drawerHolder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DrawerHolder</span>();
+    ...
+    <span class="hljs-meta">@NonNull</span>
+    <span class="hljs-keyword">public</span> View <span class="hljs-title function_">getView</span><span class="hljs-params">(<span class="hljs-type">int</span> position, View convertView, <span class="hljs-meta">@NonNull</span> ViewGroup parent)</span> {
+        View view;
+        ViewHolder viewHolder;
+        <span class="hljs-keyword">if</span> (convertView == <span class="hljs-literal">null</span>) {
+            view = LayoutInflater.from(context).inflate(R.layout.item, <span class="hljs-literal">null</span>);
+            viewHolder = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ViewHolder</span>();
+            viewHolder.item = view.findViewById(R.id.item_drawer);
+            view.setTag(viewHolder);
+        } <span class="hljs-keyword">else</span> {
+            view = convertView;
+            viewHolder = (ViewHolder) view.getTag();
+        }
+        <span class="hljs-comment">// The first parameter of bindHolder is the SwipeDrawer layout of the item passed to SwipeDrawer</span>
+        <span class="hljs-comment">// The second parameter of bindHolder passes a unique object for Object</span>
+        drawerHolder.bindHolder(viewHolder.item, list.get(position));
+        <span class="hljs-keyword">return</span> view;
+    }
+    ...
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ViewHolder</span> {
+        SwipeDrawer item;
+    }
+}</code></pre>
+				<pre><strong>RecyclerView Call example: </strong><code class="hljs"><span class="hljs-keyword">private</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ListAdapter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">RecyclerView</span>.Adapter&lt;ListAdapter.ListViewHolder&gt; {
+    <span class="hljs-keyword">private</span> Context context;
+    <span class="hljs-keyword">private</span> List&lt;String&gt; list;
+    <span class="hljs-keyword">private</span> <span class="hljs-type">DrawerHolder</span> <span class="hljs-variable">drawerHolder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DrawerHolder</span>();
+    ...
+    <span class="hljs-meta">@NonNull</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> ListViewHolder <span class="hljs-title function_">onCreateViewHolder</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> ViewGroup parent, <span class="hljs-type">int</span> viewType)</span> {
+        <span class="hljs-type">View</span> <span class="hljs-variable">addView</span> <span class="hljs-operator">=</span> LayoutInflater.from(context).inflate(R.layout.item, <span class="hljs-literal">null</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListViewHolder</span>(addView);
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onBindViewHolder</span><span class="hljs-params">(<span class="hljs-meta">@NonNull</span> ListViewHolder holder, <span class="hljs-type">int</span> position)</span> {
+        <span class="hljs-comment">// The first parameter of bindHolder is the SwipeDrawer layout of the item passed to SwipeDrawer</span>
+        <span class="hljs-comment">// The second parameter of bindHolder passes a unique object for Object</span>
+        drawerHolder.bindHolder(holder.item, list.get(position));
+    }
+    ...
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ListViewHolder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">RecyclerView</span>.ViewHolder {
+        SwipeDrawer item;
+        <span class="hljs-keyword">private</span> <span class="hljs-title function_">ListViewHolder</span><span class="hljs-params">(View view)</span> {
+            <span class="hljs-built_in">super</span>(view);
+            item = view.findViewById(R.id.item_drawer);;
+        }
+        ...
+    }
+}</code></pre>
+			</div>
+		</div>
+		<div class="ment-btn"></div>
+	</div>
+	<footer class="footer">
+		<div class="main">
+			<p>Copyright © 2022 <a href="https://github.com/Leaqi" title="Leaqi Github" target="_blank">Leaqi</a> . All Rights Reserved.</p>
+		</div>
+	</footer>
+	<script type="text/javascript" src="https://libs.baidu.com/jquery/1.10.0/jquery.min.js"></script>
+	<script type="text/javascript" src="/libs/js/base.min.js"></script>
+</body>
+</html>

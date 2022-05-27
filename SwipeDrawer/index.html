@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>SwipeDrawer</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,user-scalable=no">
+	<link href="/libs/css/base.min.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	<header class="header">
+		<div class="main">
+			<div class="logo">
+				<a href="/SwipeDrawer/"><h1>SwipeDrawer</h1></a>
+			</div>
+			<div class="menu">
+				<ul>
+					<li class="cur"><a href="/SwipeDrawer/" title="使用文档">使用文档</a></li>
+					<li><a href="/SwipeDrawer/code.html" title="功能详解">功能详解</a></li>
+					<li><a href="/SwipeDrawer/pics.html" title="图片演示">图片演示</a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github问题交流">问题交流</a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github项目源码">项目源码</a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.0/demo.apk" title="下载Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
+					<li class="r"><a href="/SwipeDrawer_en/" title="Switch to English"><img src="/libs/images/Language-English.svg"></a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div class="head-title">
+		<div class="main">
+			<div class="title">使用文档</div>
+			<div class="desc">Android SwipeDrawer 滑动抽屉库</div>
+		</div>
+	</div>
+	<div class="main">
+		<div class="main-left">
+			<div class="tree">
+				<ul>
+					<li class="title" data-btn="A0"><span>开始使用</span></li>
+					<li data-btn="A1"><span>简单介绍</span></li>
+					<li data-btn="A2"><span>如何使用</span></li>
+					<li class="title" data-btn="B0"><span>使用文档</span></li>
+					<li data-btn="B1"><span>布局属性</span></li>
+					<li data-btn="B2"><span>获取属性</span></li>
+					<li data-btn="B3"><span>设置属性</span></li>
+					<li data-btn="B4"><span>回调接口</span></li>
+					<li data-btn="B5"><span>调用方法</span></li>
+					<li data-btn="B6"><span>全局方法</span></li>
+				</ul>
+			</div>
+			<div class="mask"></div>
+		</div>
+		<div class="main-right">
+			<div class="content">
+				<h1 data-tab="A0">开始使用</h1>
+				<h2 data-tab="A1">简单介绍</h2>
+				<p>Android SwipeDrawer滑动抽屉库，可同时添加上下左右四个方向抽屉布局，抽屉打开模式有抽屉模式、覆盖模式、固定模式三种，支持无限嵌套，支持边缘滑动打开等，SwipeDrawer还可以当做下拉刷新布局使用，支持ListView、RecyclerView、GridView、ScrollView等。</p>
+				<br/>
+				<br/>
+				<h2 data-tab="A2">如何使用</h2>
+				<p>添加<label>jitpack</label>仓库地址：</p>
+				<pre><code class="hljs">allprojects {
+    repositories {
+        ...
+        maven { url <span class="hljs-string">&quot;https://jitpack.io&quot;</span> }
+    }
+}</code></pre>
+				<br/>
+				<p>添加<label>SwipeDrawer</label>依赖：</p>
+				<pre><code class="hljs">dependencies {
+    ...
+    implementation <span class="hljs-string">&#x27;cn.Leaqi.SwipeDrawer:1.0&#x27;</span>
+}</code></pre>
+				<br/>
+				<p>在布局文件中加入<label>SwipeDrawer</label>：</p>
+				<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:leftLayout</span>=<span class="hljs-string">&quot;@+id/leftDrawer&quot;</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- leftLayout属性指定Left布局 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/leftDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;200dp&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FF5722&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span>
+            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">&quot;center&quot;</span>
+            <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Left&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- 默认第一个未指定ID的布局为主布局 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span>
+            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">&quot;center&quot;</span>
+            <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Main&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+				<br/>
+				<br/>
+				<h1 data-tab="B0">使用文档</h1>
+				<h2 data-tab="B1">布局属性</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>属性名称</th>
+							<th>说明</th>
+							<th>类型</th>
+							<th>默认值</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>mode</td>
+							<td>
+								<p>打开模式：</p>
+								<p><label>drawer</label>：抽屉模式</p>
+								<p><label>cover</label>：覆盖模式</p>
+								<p><label>fixed</label>：固定模式</p>
+							</td>
+							<td>enum</td>
+							<td>drawer</td>
+						</tr>
+						<tr>
+							<td>open</td>
+							<td>
+								<p>初始化状态：</p>
+								<p><label>left</label>：打开Left</p>
+								<p><label>top</label>：打开Top</p>
+								<p><label>right</label>：打开Right</p>
+								<p><label>bottom</label>：打开Bottom</p>
+							</td>
+							<td>enum</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>mask</td>
+							<td>
+								<p>背景遮罩：</p>
+								<p><label>none</label>：不开启</p>
+								<p><label>general</label>：固定遮罩颜色</p>
+								<p><label>gradual</label>：遮罩逐渐深浅</p>
+							</td>
+							<td>enum</td>
+							<td>none</td>
+						</tr>
+						<tr>
+							<td>mainLayout</td>
+							<td>指定主布局ID</td>
+							<td>reference</td>
+							<td>默认为第一个未指定ID的布局</td>
+						</tr>
+						<tr>
+							<td>leftLayout</td>
+							<td>指定Left布局ID</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>topLayout</td>
+							<td>指定Top布局ID</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>rightLayout</td>
+							<td>指定Right布局ID</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>bottomLayout</td>
+							<td>指定Bottom布局ID</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>mainType</td>
+							<td>
+								<p>主布局类型：</p>
+								<p><label>view</label>：非滑动布局</p>
+								<p><label>scrollY</label>：垂直滑动布局</p>
+								<p><label>scrollX</label>：水平滑动布局</p>
+							</td>
+							<td>enum</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>leftType</td>
+							<td>
+								<p>Left布局类型：</p>
+								<p><label>view</label>：非滑动布局</p>
+								<p><label>scrollY</label>：垂直滑动布局</p>
+								<p><label>scrollX</label>：水平滑动布局</p>
+							</td>
+							<td>enum</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>topType</td>
+							<td>
+								<p>Top布局类型：</p>
+								<p><label>view</label>：非滑动布局</p>
+								<p><label>scrollY</label>：垂直滑动布局</p>
+								<p><label>scrollX</label>：水平滑动布局</p>
+							</td>
+							<td>enum</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>rightType</td>
+							<td>
+								<p>Right布局类型：</p>
+								<p><label>view</label>：非滑动布局</p>
+								<p><label>scrollY</label>：垂直滑动布局</p>
+								<p><label>scrollX</label>：水平滑动布局</p>
+							</td>
+							<td>enum</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>bottomType</td>
+							<td>
+								<p>Bottom布局类型：</p>
+								<p><label>view</label>：非滑动布局</p>
+								<p><label>scrollY</label>：垂直滑动布局</p>
+								<p><label>scrollX</label>：水平滑动布局</p>
+							</td>
+							<td>enum</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>leftMode</td>
+							<td>
+								<p>指定Left打开模式：</p>
+								<p><label>drawer</label>：抽屉模式</p>
+								<p><label>cover</label>：覆盖模式</p>
+								<p><label>fixed</label>：固定模式</p>
+							</td>
+							<td>enum</td>
+							<td>drawer</td>
+						</tr>
+						<tr>
+							<td>topMode</td>
+							<td>
+								<p>指定Top打开模式：</p>
+								<p><label>drawer</label>：抽屉模式</p>
+								<p><label>cover</label>：覆盖模式</p>
+								<p><label>fixed</label>：固定模式</p>
+							</td>
+							<td>enum</td>
+							<td>drawer</td>
+						</tr>
+						<tr>
+							<td>rightMode</td>
+							<td>
+								<p>指定Right打开模式：</p>
+								<p><label>drawer</label>：抽屉模式</p>
+								<p><label>cover</label>：覆盖模式</p>
+								<p><label>fixed</label>：固定模式</p>
+							</td>
+							<td>enum</td>
+							<td>drawer</td>
+						</tr>
+						<tr>
+							<td>bottomMode</td>
+							<td>
+								<p>指定Bottom打开模式：</p>
+								<p><label>drawer</label>：抽屉模式</p>
+								<p><label>cover</label>：覆盖模式</p>
+								<p><label>fixed</label>：固定模式</p>
+							</td>
+							<td>enum</td>
+							<td>drawer</td>
+						</tr>
+						<tr>
+							<td>mainOpen</td>
+							<td>
+								<p>打开后主布局触摸事件：</p>
+								<p><label>none</label>：不屏蔽</p>
+								<p><label>click</label>：只允许点击</p>
+								<p><label>intercept</label>：禁止所有触摸事件</p>
+							</td>
+							<td>enum</td>
+							<td>none</td>
+						</tr>
+						<tr>
+							<td>parentDrawer</td>
+							<td>指定SwipeDrawer父布局ID，嵌套时使用</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>mainScroll</td>
+							<td>指定主布局下滑动布局ID</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>leftScroll</td>
+							<td>指定Left主布局下滑动布局ID</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>topScroll</td>
+							<td>指定Top主布局下滑动布局ID</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>rightScroll</td>
+							<td>指定Right主布局下滑动布局ID</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>bottomScroll</td>
+							<td>指定Bottom布局下滑动布局ID</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>leftDragOpen</td>
+							<td>Left布局拖拽打开</td>
+							<td>boolean</td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>topDragOpen</td>
+							<td>Top布局拖拽打开</td>
+							<td>boolean</td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>rightDragOpen</td>
+							<td>Right布局拖拽打开</td>
+							<td>boolean</td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>bottomDragOpen</td>
+							<td>Bottom布局拖拽打开</td>
+							<td>boolean</td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>showLayout</td>
+							<td>非当前操作的布局是否隐藏</td>
+							<td>boolean</td>
+							<td>false</td>
+						</tr>
+						<tr>
+							<td>autoClose</td>
+							<td>打开后是否关闭其他SwipeDrawer</td>
+							<td>boolean</td>
+							<td>false</td>
+						</tr>
+						<tr>
+							<td>maskClose</td>
+							<td>点击遮罩后关闭</td>
+							<td>boolean</td>
+							<td>false</td>
+						</tr>
+						<tr>
+							<td>maskColor</td>
+							<td>遮罩颜色</td>
+							<td>color</td>
+							<td>#80000000</td>
+						</tr>
+						<tr>
+							<td>dragClose</td>
+							<td>允许拖拽关闭</td>
+							<td>boolean</td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>scrollOuterDrag</td>
+							<td>滑动布局之外是否允许拖拽</td>
+							<td>boolean</td>
+							<td>false</td>
+						</tr>
+						<tr>
+							<td>shrinkRange</td>
+							<td>拖拽距离：<br/>默认值为：<label>5</label>，拖动方向高/宽度的5分之1<br/><label>0</label>：可以拖拽，但不会开启或关闭</td>
+							<td>float</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>dragDamping</td>
+							<td>拖拽阻力：0-9<br/><label>10</label>：无阻力</td>
+							<td>int</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>dragRange</td>
+							<td>边缘拖拽<br/>布局方向的最边缘<label>dragRange</label>dip才允许拖拽<br/><label>0</label>：全布局拖拽</td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>maxDragSize</td>
+							<td>最大拖拽高/宽度<br/><label>0</label>：布局高/宽度</td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>duration</td>
+							<td>动画速度</td>
+							<td>int</td>
+							<td>200</td>
+						</tr>
+						<tr>
+							<td>interpolator</td>
+							<td>动画插值器</td>
+							<td>reference</td>
+							<td>AccelerateDecelerateInterpolator</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/><br/>
+				<h2 data-tab="B2">获取属性</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>方法名称</th>
+							<th>说明</th>
+							<th>返回</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>getShow()</td>
+							<td>
+								<p>获取是否打开</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getIntercept()</td>
+							<td>
+								<p>获取是否拦截事件，及正在拖拽</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getArriveRange()</td>
+							<td>
+								<p>获取拖拽是否超过打开/关闭的距离</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getDirection()</td>
+							<td>
+								<p>获取操作的方向：</p>
+								<p><label>SwipeDrawer.DIRECTION_ORDER</label>：未操作</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left布局</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top布局</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right布局</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom布局</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<!--tr>
+							<td>getDirection(View view)</td>
+							<td>
+								<p>获取指定View的方向：</p>
+								<p><label>SwipeDrawer.DIRECTION_ORDER</label>：未找到/其他</p>
+								<p><label>SwipeDrawer.DIRECTION_MAIN</label>：主布局</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left布局</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top布局</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right布局</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom布局</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getDirectionMode(int type)</td>
+							<td>
+								<p>获取方向的<label>mode</label>：</p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>：抽屉模式</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>：覆盖模式</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>：固定模式</p>
+							</td>
+							<td>int</td>
+						</tr-->
+						<tr>
+							<td>getMaskView()</td>
+							<td>
+								<p>获取遮罩View，未设置为<label>null</label></p>
+							</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>getMainView()</td>
+							<td>
+								<p>获取主布局View，未设置为<label>null</label></p>
+							</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>getLeftView()</td>
+							<td>
+								<p>获取Left布局View，未设置为<label>null</label></p>
+							</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>getTopView()</td>
+							<td>
+								<p>获取Top布局View，未设置为<label>null</label></p>
+							</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>getRightView()</td>
+							<td>
+								<p>获取Right布局View，未设置为<label>null</label></p>
+							</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>getBottomView()</td>
+							<td>
+								<p>获取Bottom布局View，未设置为<label>null</label></p>
+							</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>getMode()</td>
+							<td>
+								<p>获取<label>mode</label>属性：</p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>：抽屉模式</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>：覆盖模式</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>：固定模式</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getLeftMode()</td>
+							<td>
+								<p>获取<label>leftMode</label>属性：</p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>：抽屉模式</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>：覆盖模式</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>：固定模式</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getTopMode()</td>
+							<td>
+								<p>获取<label>topMode</label>属性：</p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>：抽屉模式</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>：覆盖模式</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>：固定模式</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getRightMode()</td>
+							<td>
+								<p>获取<label>rightMode</label>属性：</p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>：抽屉模式</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>：覆盖模式</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>：固定模式</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getBottomMode()</td>
+							<td>
+								<p>获取<label>bottomMode</label>属性：</p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>：抽屉模式</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>：覆盖模式</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>：固定模式</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getMask()</td>
+							<td>
+								<p>获取<label>mask</label>属性：</p>
+								<p><label>SwipeDrawer.MASK_NONE</label>：不开启</p>
+								<p><label>SwipeDrawer.MASK_GENERAL</label>：固定遮罩颜色</p>
+								<p><label>SwipeDrawer.MASK_GRADUAL</label>：遮罩逐渐深浅</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getMainType()</td>
+							<td>
+								<p>获取<label>mainType</label>属性：</p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>：非滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>：垂直滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>：水平滑动布局</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getLeftType()</td>
+							<td>
+								<p>获取<label>leftType</label>属性：</p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>：非滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>：垂直滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>：水平滑动布局</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getTopType()</td>
+							<td>
+								<p>获取<label>topType</label>属性：</p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>：非滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>：垂直滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>：水平滑动布局</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getRightType()</td>
+							<td>
+								<p>获取<label>rightType</label>属性：</p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>：非滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>：垂直滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>：水平滑动布局</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getBottomType()</td>
+							<td>
+								<p>获取<label>bottomType</label>属性：</p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>：非滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>：垂直滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>：水平滑动布局</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getMainOpen()</td>
+							<td>
+								<p>获取<label>mainOpen</label>属性：</p>
+								<p><label>SwipeDrawer.MAIN_OPEN_NONE</label>：不屏蔽</p>
+								<p><label>SwipeDrawer.MAIN_OPEN_CLICK</label>：只允许点击</p>
+								<p><label>SwipeDrawer.MAIN_OPEN_INTERCEPT</label>：禁止所有触摸事件</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getShrinkRange()</td>
+							<td>
+								<p>获取<label>shrinkRange</label>属性</p>
+							</td>
+							<td>float</td>
+						</tr>
+						<tr>
+							<td>getDragDamping()</td>
+							<td>
+								<p>获取<label>dragDamping</label>属性</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getDragRange()</td>
+							<td>
+								<p>获取<label>dragRange</label>属性</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getMaxDragSize()</td>
+							<td>
+								<p>获取<label>maxDragSize</label>属性</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getDuration()</td>
+							<td>
+								<p>获取<label>duration</label>属性</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getLeftDragOpen()</td>
+							<td>
+								<p>获取<label>leftDragOpen</label>属性</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getTopDragOpen()</td>
+							<td>
+								<p>获取<label>topDragOpen</label>属性</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getRightDragOpen()</td>
+							<td>
+								<p>获取<label>rightDragOpen</label>属性</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getBottomDragOpen()</td>
+							<td>
+								<p>获取<label>bottomDragOpen</label>属性</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getShowLayout()</td>
+							<td>
+								<p>获取<label>showLayout</label>属性</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getAutoClose()</td>
+							<td>
+								<p>获取<label>autoClose</label>属性</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getMaskClose()</td>
+							<td>
+								<p>获取<label>maskClose</label>属性</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getMaskColor()</td>
+							<td>
+								<p>获取<label>maskColor</label>属性</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getScrollOuterDrag()</td>
+							<td>
+								<p>获取<label>scrollOuterDrag</label>属性</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/><br/>
+				<h2 data-tab="B3">设置属性</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>方法名称</th>
+							<th>说明</th>
+							<th>参数</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>setMainScale(float scale)</td>
+							<td>
+								<p>设置主布局缩放</p>
+							</td>
+							<td>
+								<p>scale：<label>float</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainRotation(float rotation)</td>
+							<td>
+								<p>设置主布局旋转</p>
+							</td>
+							<td>
+								<p>rotation：<label>float</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setIntercept(boolean intercept)</td>
+							<td>
+								<p>设置手动拦截所有方向触摸事件</p>
+							</td>
+							<td>
+								<p>intercept：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setIntercept(View view, boolean intercept)</td>
+							<td>
+								<p>设置手动拦截指定方向触摸事件</p>
+							</td>
+							<td>
+								<p>view：<label>指定方向view</label></p>
+								<p>intercept：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setIntercept(int type, boolean intercept)</td>
+							<td>
+								<p>设置手动拦截指定方向触摸事件</p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom方向</p>
+								<p>intercept：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMode(int type)</td>
+							<td>
+								<p>设置<label>mode</label>属性<br/>必须在关闭的情况下设置才有效</p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>：抽屉模式</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>：覆盖模式</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>：固定模式</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftMode(int type)</td>
+							<td>
+								<p>设置<label>leftMode</label>属性<br/>必须在关闭的情况下设置才有效</p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>：抽屉模式</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>：覆盖模式</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>：固定模式</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightMode(int type)</td>
+							<td>
+								<p>设置<label>rightMode</label>属性<br/>必须在关闭的情况下设置才有效</p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>：抽屉模式</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>：覆盖模式</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>：固定模式</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopMode(int type)</td>
+							<td>
+								<p>设置<label>topMode</label>属性<br/>必须在关闭的情况下设置才有效</p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>：抽屉模式</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>：覆盖模式</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>：固定模式</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomMode(int type)</td>
+							<td>
+								<p>设置<label>bottomMode</label>属性<br/>必须在关闭的情况下设置才有效</p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>：抽屉模式</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>：覆盖模式</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>：固定模式</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMask(int type)</td>
+							<td>
+								<p>设置<label>mode</label>属性</p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.MASK_NONE</label>：不开启</p>
+								<p><label>SwipeDrawer.MASK_GENERAL</label>：固定遮罩颜色</p>
+								<p><label>SwipeDrawer.MASK_GRADUAL</label>：遮罩逐渐深浅</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainType(int type)</td>
+							<td>
+								<p>设置<label>mainType</label>属性</p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>：非滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>：垂直滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>：水平滑动布局</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftType(int type)</td>
+							<td>
+								<p>设置<label>leftType</label>属性</p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>：非滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>：垂直滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>：水平滑动布局</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopType(int type)</td>
+							<td>
+								<p>设置<label>topType</label>属性</p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>：非滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>：垂直滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>：水平滑动布局</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightType(int type)</td>
+							<td>
+								<p>设置<label>rightType</label>属性</p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>：非滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>：垂直滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>：水平滑动布局</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomType(int type)</td>
+							<td>
+								<p>设置<label>bottomType</label>属性</p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>：非滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>：垂直滑动布局</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>：水平滑动布局</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainOpen(int type)</td>
+							<td>
+								<p>设置<label>mainOpen</label>属性</p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.MAIN_OPEN_NONE</label>：不屏蔽</p>
+								<p><label>SwipeDrawer.MAIN_OPEN_CLICK</label>：只允许点击</p>
+								<p><label>SwipeDrawer.MAIN_OPEN_INTERCEPT</label>：禁止所有触摸事件</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainLayout(int id)</td>
+							<td>
+								<p>设置<label>mainLayout</label>属性</p>
+							</td>
+							<td>
+								<p>id：<label>布局ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainLayout(View view)</td>
+							<td>
+								<p>设置<label>mainLayout</label>属性</p>
+							</td>
+							<td>
+								<p>view：<label>布局view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftLayout(int id)</td>
+							<td>
+								<p>设置<label>leftLayout</label>属性</p>
+							</td>
+							<td>
+								<p>id：<label>布局ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftLayout(View view)</td>
+							<td>
+								<p>设置<label>leftLayout</label>属性</p>
+							</td>
+							<td>
+								<p>view：<label>布局view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopLayout(int id)</td>
+							<td>
+								<p>设置<label>topLayout</label>属性</p>
+							</td>
+							<td>
+								<p>id：<label>布局ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopLayout(View view)</td>
+							<td>
+								<p>设置<label>topLayout</label>属性</p>
+							</td>
+							<td>
+								<p>view：<label>布局view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightLayout(int id)</td>
+							<td>
+								<p>设置<label>rightLayout</label>属性</p>
+							</td>
+							<td>
+								<p>id：<label>布局ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightLayout(View view)</td>
+							<td>
+								<p>设置<label>rightLayout</label>属性</p>
+							</td>
+							<td>
+								<p>view：<label>布局view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomLayout(int id)</td>
+							<td>
+								<p>设置<label>bottomLayout</label>属性</p>
+							</td>
+							<td>
+								<p>id：<label>布局ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomLayout(View view)</td>
+							<td>
+								<p>设置<label>bottomLayout</label>属性</p>
+							</td>
+							<td>
+								<p>view：<label>布局view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainScroll(int id)</td>
+							<td>
+								<p>设置<label>mainScroll</label>属性</p>
+							</td>
+							<td>
+								<p>id：<label>布局ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainScroll(View view)</td>
+							<td>
+								<p>设置<label>mainScroll</label>属性</p>
+							</td>
+							<td>
+								<p>view：<label>布局view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftScroll(int id)</td>
+							<td>
+								<p>设置<label>leftScroll</label>属性</p>
+							</td>
+							<td>
+								<p>id：<label>布局ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftScroll(View view)</td>
+							<td>
+								<p>设置<label>leftScroll</label>属性</p>
+							</td>
+							<td>
+								<p>view：<label>布局view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopScroll(int id)</td>
+							<td>
+								<p>设置<label>topScroll</label>属性</p>
+							</td>
+							<td>
+								<p>id：<label>布局ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopScroll(View view)</td>
+							<td>
+								<p>设置<label>topScroll</label>属性</p>
+							</td>
+							<td>
+								<p>view：<label>布局view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightScroll(int id)</td>
+							<td>
+								<p>设置<label>rightScroll</label>属性</p>
+							</td>
+							<td>
+								<p>id：<label>布局ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightScroll(View view)</td>
+							<td>
+								<p>设置<label>rightScroll</label>属性</p>
+							</td>
+							<td>
+								<p>view：<label>布局view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomScroll(int id)</td>
+							<td>
+								<p>设置<label>bottomScroll</label>属性</p>
+							</td>
+							<td>
+								<p>id：<label>布局ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomScroll(View view)</td>
+							<td>
+								<p>设置<label>bottomScroll</label>属性</p>
+							</td>
+							<td>
+								<p>view：<label>布局view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setParentDrawer(int id)</td>
+							<td>
+								<p>设置<label>parentDrawer</label>属性</p>
+							</td>
+							<td>
+								<p>id：<label>布局ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setParentDrawer(SwipeDrawer view)</td>
+							<td>
+								<p>设置<label>parentDrawer</label>属性</p>
+							</td>
+							<td>
+								<p>SwipeDrawer：<label>布局view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setShrinkRange(float num)</td>
+							<td>
+								<p>设置<label>shrinkRange</label>属性</p>
+							</td>
+							<td>
+								<p>num：<label>float</label><br/><label>0</label>：可以拖拽，但不会开启或关闭</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setDragDamping(int num)</td>
+							<td>
+								<p>设置<label>dragDamping</label>属性</p>
+							</td>
+							<td>
+								<p>num：<label>int</label>0-9<br/><label>10</label>：无阻力</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setDragRange(int num)</td>
+							<td>
+								<p>设置<label>dragRange</label>属性</p>
+							</td>
+							<td>
+								<p>num：<label>int</label><br/><label>0</label>：全布局拖拽</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMaxDragSize(int num)</td>
+							<td>
+								<p>设置<label>maxDragSize</label>属性</p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftDragOpen(boolean bool)</td>
+							<td>
+								<p>设置<label>leftDragOpen</label>属性</p>
+							</td>
+							<td>
+								<p>bool：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopDragOpen(boolean bool)</td>
+							<td>
+								<p>设置<label>topDragOpen</label>属性</p>
+							</td>
+							<td>
+								<p>bool：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightDragOpen(boolean bool)</td>
+							<td>
+								<p>设置<label>rightDragOpen</label>属性</p>
+							</td>
+							<td>
+								<p>bool：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomDragOpen(boolean bool)</td>
+							<td>
+								<p>设置<label>bottomDragOpen</label>属性</p>
+							</td>
+							<td>
+								<p>bool：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setShowLayout(boolean bool)</td>
+							<td>
+								<p>设置<label>showLayout</label>属性</p>
+							</td>
+							<td>
+								<p>bool：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setAutoClose(boolean bool)</td>
+							<td>
+								<p>设置<label>autoClose</label>属性</p>
+							</td>
+							<td>
+								<p>bool：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMaskClose(boolean bool)</td>
+							<td>
+								<p>设置<label>maskClose</label>属性</p>
+							</td>
+							<td>
+								<p>bool：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMaskColor(int color)</td>
+							<td>
+								<p>设置<label>maskColor</label>属性</p>
+							</td>
+							<td>
+								<p>int：<label>color</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setDragClose(boolean bool)</td>
+							<td>
+								<p>设置<label>dragClose</label>属性</p>
+							</td>
+							<td>
+								<p>bool：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setScrollOuterDrag(boolean bool)</td>
+							<td>
+								<p>设置<label>scrollOuterDrag</label>属性</p>
+							</td>
+							<td>
+								<p>bool：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setDuration(int ms)</td>
+							<td>
+								<p>设置<label>duration</label>属性</p>
+							</td>
+							<td>
+								<p>ms：<label>int</label>毫秒</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setInterpolator(Interpolator interpolator)</td>
+							<td>
+								<p>设置<label>interpolator</label>属性</p>
+							</td>
+							<td>
+								<p>interpolator：<label>Interpolator</label>插值器</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/><br/>
+				<h2 data-tab="B4">回调接口</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>方法名称</th>
+							<th>说明</th>
+							<th>参数</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>setOnDrawerState(OnDrawerState listener)</td>
+							<td>
+								<p>监听开始、移动、开启、关闭、取消回调</p>
+							</td>
+							<td>
+								<p>listener：<label>OnDrawerState</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setOnDrawerSwitch(OnDrawerSwitch listener)</td>
+							<td>
+								<p>监听开启、关闭回调</p>
+							</td>
+							<td>
+								<p>listener：<label>OnDrawerSwitch</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setOnDrawerChange(OnDrawerChange listener)</td>
+							<td>
+								<p>监听改变，由参数返回各种状态</p>
+							</td>
+							<td>
+								<p>listener：<label>OnDrawerChange</label></p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/><br/>
+				<h2 data-tab="B5">调用方法</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>方法名称</th>
+							<th>说明</th>
+							<th>参数</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>openDrawer(int type)</td>
+							<td>
+								<p>打开指定方向</p>
+							</td>
+							<td>
+								<p>int：</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom方向</p>
+							</td>
+						</tr>
+						<tr>
+							<td>openDrawer(int type, boolean anim)</td>
+							<td>
+								<p>打开指定方向、动画设置</p>
+							</td>
+							<td>
+								<p>int：</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom方向</p>
+								<p>anim：<label>true/false</label>是否开启动画</p>
+							</td>
+						</tr>
+						<tr>
+							<td>openDrawer(int type, <br>　　　　　　boolean anim, <br>　　　　　　boolean call)</td>
+							<td>
+								<p>打开指定方向、动画设置、回调设置</p>
+							</td>
+							<td>
+								<p>int：</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom方向</p>
+								<p>anim：<label>true/false</label>是否开启动画</p>
+								<p>call：<label>true/false</label>是否回调接口</p>
+							</td>
+						</tr>
+						<tr>
+							<td>closeDrawer()</td>
+							<td>
+								<p>关闭</p>
+							</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>closeDrawer(boolean anim)</td>
+							<td>
+								<p>关闭、动画设置</p>
+							</td>
+							<td>
+								<p>anim：<label>true/false</label>是否开启动画</p>
+							</td>
+						</tr>
+						<tr>
+							<td>closeDrawer(boolean anim, boolean call)</td>
+							<td>
+								<p>关闭、动画设置、回调设置</p>
+							</td>
+							<td>
+								<p>anim：<label>true/false</label>是否开启动画</p>
+								<p>call：<label>true/false</label>是否回调接口</p>
+							</td>
+						</tr>
+						<tr>
+							<td>closeDrawer(int type)</td>
+							<td>
+								<p>关闭指定方向</p>
+							</td>
+							<td>
+								<p>int：</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom方向</p>
+							</td>
+						</tr>
+						<tr>
+							<td>closeDrawer(int type, boolean anim)</td>
+							<td>
+								<p>关闭指定方向、动画设置</p>
+							</td>
+							<td>
+								<p>int：</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom方向</p>
+								<p>anim：<label>true/false</label>是否开启动画</p>
+							</td>
+						</tr>
+						<tr>
+							<td>closeDrawer(int type, <br>　　　　　　boolean anim, <br>　　　　　　boolean call)</td>
+							<td>
+								<p>关闭指定方向、动画设置、回调设置</p>
+							</td>
+							<td>
+								<p>int：</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom方向</p>
+								<p>anim：<label>true/false</label>是否开启动画</p>
+								<p>call：<label>true/false</label>是否回调接口</p>
+							</td>
+						</tr>
+						<tr>
+							<td>toggleDrawer(int type)</td>
+							<td>
+								<p>打开/关闭指定方向</p>
+							</td>
+							<td>
+								<p>int：</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom方向</p>
+							</td>
+						</tr>
+						<tr>
+							<td>toggleDrawer(int type, boolean anim)</td>
+							<td>
+								<p>打开/关闭指定方向、动画设置</p>
+							</td>
+							<td>
+								<p>int：</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom方向</p>
+								<p>anim：<label>true/false</label>是否开启动画</p>
+							</td>
+						</tr>
+						<tr>
+							<td>toggleDrawer(int type, <br>　　　　　　boolean anim, <br>　　　　　　boolean call)</td>
+							<td>
+								<p>打开/关闭指定方向、动画设置、回调设置</p>
+							</td>
+							<td>
+								<p>int：</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom方向</p>
+								<p>anim：<label>true/false</label>是否开启动画</p>
+								<p>call：<label>true/false</label>是否回调接口</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/><br/>
+				<h2 data-tab="B6">全局方法</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>方法名称</th>
+							<th>说明</th>
+							<th>参数/返回</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>SwipeDrawer.setAllIntercept(boolean bool)</td>
+							<td>
+								<p>设置屏蔽所有<label>SwipeDrawer</label>触摸事件</p>
+							</td>
+							<td>
+								<p>bool：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>SwipeDrawer.getAllIntercept()</td>
+							<td>
+								<p>获取<label>SwipeDrawer</label>触摸事件是否屏蔽</p>
+							</td>
+							<td>
+								<p>boolean</p>
+							</td>
+						</tr>
+						<tr>
+							<td>SwipeDrawer.getParentDrawer(View view)</td>
+							<td>
+								<p>获取view的父级<label>SwipeDrawer</label></p>
+							</td>
+							<td>
+								<p>SwipeDrawer</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/><br/>
+			</div>
+		</div>
+		<div class="ment-btn"></div>
+	</div>
+	<footer class="footer">
+		<div class="main">
+			<p>Copyright © 2022 <a href="https://github.com/Leaqi" title="Leaqi Github" target="_blank">Leaqi</a> . All Rights Reserved.</p>
+		</div>
+	</footer>
+	<script type="text/javascript" src="https://libs.baidu.com/jquery/1.10.0/jquery.min.js"></script>
+	<script type="text/javascript" src="/libs/js/base.min.js"></script>
+</body>
+</html>

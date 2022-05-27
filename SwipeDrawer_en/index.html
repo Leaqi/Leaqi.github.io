@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>SwipeDrawer</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,user-scalable=no">
+	<link href="/libs/css/base.min.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	<header class="header">
+		<div class="main">
+			<div class="logo">
+				<a href="/SwipeDrawer_en/"><h1>SwipeDrawer</h1></a>
+			</div>
+			<div class="menu">
+				<ul>
+					<li class="cur"><a href="/SwipeDrawer_en/" title="Use Docs">Docs</a></li>
+					<li><a href="/SwipeDrawer_en/code.html" title="Detailed Docs">Detailed</a></li>
+					<li><a href="/SwipeDrawer_en/pics.html" title="Picture Preview">Picture</a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github Issues">Issues</a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github Project Code">Project Code</a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.0/demo.apk" title="Download Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
+					<li class="r"><a href="/SwipeDrawer/" title="切换中文版"><img src="/libs/images/Language-Chinese.svg"></a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div class="head-title">
+		<div class="main">
+			<div class="title">Use Docs</div>
+			<div class="desc">Android SwipeDrawer sliding drawer library</div>
+		</div>
+	</div>
+	<div class="main">
+		<div class="main-left">
+			<div class="tree">
+				<ul>
+					<li class="title" data-btn="A0"><span>Start using</span></li>
+					<li data-btn="A1"><span>Introduce</span></li>
+					<li data-btn="A2"><span>Setup</span></li>
+					<li class="title" data-btn="B0"><span>Using docs</span></li>
+					<li data-btn="B1"><span>Layout attribute</span></li>
+					<li data-btn="B2"><span>Get attribute</span></li>
+					<li data-btn="B3"><span>Set attribute</span></li>
+					<li data-btn="B4"><span>Call Interface</span></li>
+					<li data-btn="B5"><span>Call method</span></li>
+					<li data-btn="B6"><span>Static method</span></li>
+				</ul>
+			</div>
+			<div class="mask"></div>
+		</div>
+		<div class="main-right">
+			<div class="content">
+				<h1 data-tab="A0">Start using</h1>
+				<h2 data-tab="A1">Introduce</h2>
+				<p>Android SwipeDrawer sliding drawer library can add up, down, left and right drawer layouts at the same time. There are three drawer opening modes: drawer mode, overlay mode and fixed mode. It supports unlimited nesting and edge sliding opening. Swipedrawer can also be used as a drop-down refresh layout, and supports listview, recyclerview, GridView, Scrollview, etc.</p>
+				<br/>
+				<br/>
+				<h2 data-tab="A2">Setup</h2>
+				<p>Add<label>jitpack</label>repositories: </p>
+				<pre><code class="hljs">allprojects {
+    repositories {
+        ...
+        maven { url <span class="hljs-string">&quot;https://jitpack.io&quot;</span> }
+    }
+}</code></pre>
+				<br/>
+				<p>Add<label>SwipeDrawer</label>dependencies: </p>
+				<pre><code class="hljs">dependencies {
+    ...
+    implementation <span class="hljs-string">&#x27;cn.Leaqi.SwipeDrawer:1.0&#x27;</span>
+}</code></pre>
+				<br/>
+				<p>Add<label>SwipeDrawer</label>to the layout file: </p>
+				<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+    <span class="hljs-attr">app:leftLayout</span>=<span class="hljs-string">&quot;@+id/leftDrawer&quot;</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- The leftLayout property specifies the left layout --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/leftDrawer&quot;</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;200dp&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">&quot;#FF5722&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span>
+            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">&quot;center&quot;</span>
+            <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Left&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- By default, the first layout without ID is the main layout --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">TextView</span>
+            <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
+            <span class="hljs-attr">android:gravity</span>=<span class="hljs-string">&quot;center&quot;</span>
+            <span class="hljs-attr">android:text</span>=<span class="hljs-string">&quot;Main&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
+				<br/>
+				<br/>
+				<h1 data-tab="B0">Using docs</h1>
+				<h2 data-tab="B1">Layout attribute</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Attribute name</th>
+							<th>explain</th>
+							<th>type</th>
+							<th>Default value</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>mode</td>
+							<td>
+								<p>Open mode: </p>
+								<p><label>drawer</label>: Drawer mode</p>
+								<p><label>cover</label>: Cover mode</p>
+								<p><label>fixed</label>: Fixed mode</p>
+							</td>
+							<td>enum</td>
+							<td>drawer</td>
+						</tr>
+						<tr>
+							<td>open</td>
+							<td>
+								<p>Initialization status: </p>
+								<p><label>left</label>: Open left</p>
+								<p><label>top</label>: Open top</p>
+								<p><label>right</label>: Open right</p>
+								<p><label>bottom</label>: Open bottom</p>
+							</td>
+							<td>enum</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>mask</td>
+							<td>
+								<p>Background mask: </p>
+								<p><label>none</label>: Not used</p>
+								<p><label>general</label>: Fixed color</p>
+								<p><label>gradual</label>: Gradual depth</p>
+							</td>
+							<td>enum</td>
+							<td>none</td>
+						</tr>
+						<tr>
+							<td>mainLayout</td>
+							<td>Specifies the main layout ID</td>
+							<td>reference</td>
+							<td>The default is the first layout with no ID specified</td>
+						</tr>
+						<tr>
+							<td>leftLayout</td>
+							<td>Specifies the left layout ID</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>topLayout</td>
+							<td>Specifies the top layout ID</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>rightLayout</td>
+							<td>Specifies the right layout ID</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>bottomLayout</td>
+							<td>Specifies the bottom layout ID</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>mainType</td>
+							<td>
+								<p>Main layout type: </p>
+								<p><label>view</label>: Non sliding layout</p>
+								<p><label>scrollY</label>: Vertical sliding layout</p>
+								<p><label>scrollX</label>: Horizontal sliding layout</p>
+							</td>
+							<td>enum</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>leftType</td>
+							<td>
+								<p>Left layout type: </p>
+								<p><label>view</label>: Non sliding layout</p>
+								<p><label>scrollY</label>: Vertical sliding layout</p>
+								<p><label>scrollX</label>: Horizontal sliding layout</p>
+							</td>
+							<td>enum</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>topType</td>
+							<td>
+								<p>Top layout type: </p>
+								<p><label>view</label>: Non sliding layout</p>
+								<p><label>scrollY</label>: Vertical sliding layout</p>
+								<p><label>scrollX</label>: Horizontal sliding layout</p>
+							</td>
+							<td>enum</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>rightType</td>
+							<td>
+								<p>Right layout type: </p>
+								<p><label>view</label>: Non sliding layout</p>
+								<p><label>scrollY</label>: Vertical sliding layout</p>
+								<p><label>scrollX</label>: Horizontal sliding layout</p>
+							</td>
+							<td>enum</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>bottomType</td>
+							<td>
+								<p>Bottom layout type: </p>
+								<p><label>view</label>: Non sliding layout</p>
+								<p><label>scrollY</label>: Vertical sliding layout</p>
+								<p><label>scrollX</label>: Horizontal sliding layout</p>
+							</td>
+							<td>enum</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>leftMode</td>
+							<td>
+								<p>Specify left on mode: </p>
+								<p><label>drawer</label>: Drawer mode</p>
+								<p><label>cover</label>: Cover mode</p>
+								<p><label>fixed</label>: Fixed mode</p>
+							</td>
+							<td>enum</td>
+							<td>drawer</td>
+						</tr>
+						<tr>
+							<td>topMode</td>
+							<td>
+								<p>Specify top on mode: </p>
+								<p><label>drawer</label>: Drawer mode</p>
+								<p><label>cover</label>: Cover mode</p>
+								<p><label>fixed</label>: Fixed mode</p>
+							</td>
+							<td>enum</td>
+							<td>drawer</td>
+						</tr>
+						<tr>
+							<td>rightMode</td>
+							<td>
+								<p>Specify right on mode: </p>
+								<p><label>drawer</label>: Drawer mode</p>
+								<p><label>cover</label>: Cover mode</p>
+								<p><label>fixed</label>: Fixed mode</p>
+							</td>
+							<td>enum</td>
+							<td>drawer</td>
+						</tr>
+						<tr>
+							<td>bottomMode</td>
+							<td>
+								<p>Specify bottom on mode: </p>
+								<p><label>drawer</label>: Drawer mode</p>
+								<p><label>cover</label>: Cover mode</p>
+								<p><label>fixed</label>: Fixed mode</p>
+							</td>
+							<td>enum</td>
+							<td>drawer</td>
+						</tr>
+						<tr>
+							<td>mainOpen</td>
+							<td>
+								<p>Main layout touch event after opening: </p>
+								<p><label>none</label>: Unshielded</p>
+								<p><label>click</label>: Click only</p>
+								<p><label>intercept</label>: Disable all touch events</p>
+							</td>
+							<td>enum</td>
+							<td>none</td>
+						</tr>
+						<tr>
+							<td>parentDrawer</td>
+							<td>Specifies the SwipeDrawer parent layout ID, which is used when nesting</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>mainScroll</td>
+							<td>Specifies the sliding layout ID under the main layout</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>leftScroll</td>
+							<td>Specifies the sliding layout ID under the left layout</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>topScroll</td>
+							<td>Specifies the sliding layout ID under the top layout</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>rightScroll</td>
+							<td>Specifies the sliding layout ID under the right layout</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>bottomScroll</td>
+							<td>Specifies the sliding layout ID under the bottom layout</td>
+							<td>reference</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>leftDragOpen</td>
+							<td>Left layout drag open</td>
+							<td>boolean</td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>topDragOpen</td>
+							<td>Top layout drag open</td>
+							<td>boolean</td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>rightDragOpen</td>
+							<td>Right layout drag open</td>
+							<td>boolean</td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>bottomDragOpen</td>
+							<td>Bottom layout drag open</td>
+							<td>boolean</td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>showLayout</td>
+							<td>Whether the layout of non current operation is hidden</td>
+							<td>boolean</td>
+							<td>false</td>
+						</tr>
+						<tr>
+							<td>autoClose</td>
+							<td>Close other SwipeDrawer after opening</td>
+							<td>boolean</td>
+							<td>false</td>
+						</tr>
+						<tr>
+							<td>maskClose</td>
+							<td>Click mask to close</td>
+							<td>boolean</td>
+							<td>false</td>
+						</tr>
+						<tr>
+							<td>maskColor</td>
+							<td>Mask color</td>
+							<td>color</td>
+							<td>#80000000</td>
+						</tr>
+						<tr>
+							<td>dragClose</td>
+							<td>Allow drag close</td>
+							<td>boolean</td>
+							<td>true</td>
+						</tr>
+						<tr>
+							<td>scrollOuterDrag</td>
+							<td>Is dragging allowed outside the sliding layout</td>
+							<td>boolean</td>
+							<td>false</td>
+						</tr>
+						<tr>
+							<td>shrinkRange</td>
+							<td>Drag distance: <br/>Default value: <label>5</label>, Drag direction 1 / 5 of height / width<br/><label>0</label>: Can drag, But it will not turn on or off</td>
+							<td>float</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td>dragDamping</td>
+							<td>Drag damping: 0-9<br/><label>10</label>: No damping</td>
+							<td>int</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>dragRange</td>
+							<td>Edge drag<br/>Only <label>dragRange</label> dip at the most edge of the layout direction can be dragged<br/><label>0</label>: Full layout drag</td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>maxDragSize</td>
+							<td>Maximum drag height / width<br/><label>0</label>: Layout height / width</td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>duration</td>
+							<td>Animation speed</td>
+							<td>int</td>
+							<td>200</td>
+						</tr>
+						<tr>
+							<td>interpolator</td>
+							<td>Animation interpolator</td>
+							<td>reference</td>
+							<td>AccelerateDecelerateInterpolator</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/><br/>
+				<h2 data-tab="B2">Get attribute</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Method name</th>
+							<th>explain</th>
+							<th>return</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>getShow()</td>
+							<td>
+								<p>Get whether to open</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getIntercept()</td>
+							<td>
+								<p>Get whether the event is intercepted and whether it is being dragged</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getArriveRange()</td>
+							<td>
+								<p>Gets whether the drag exceeds the open / close distance</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getDirection()</td>
+							<td>
+								<p>Gets the direction of the operation: </p>
+								<p><label>SwipeDrawer.DIRECTION_ORDER</label>: Not operated</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left layout</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top layout</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right layout</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>: Bottom layout</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<!--tr>
+							<td>getDirection(View view)</td>
+							<td>
+								<p>Gets the direction of the specified view: </p>
+								<p><label>SwipeDrawer.DIRECTION_ORDER</label>: Not found / other</p>
+								<p><label>SwipeDrawer.DIRECTION_MAIN</label>: Main layout</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left layout</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top layout</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right layout</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>: Bottom layout</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getDirectionMode(int type)</td>
+							<td>
+								<p>Gets the <label>mode</label> of the direction: </p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>: Drawer mode</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>: Cover mode</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>: Fixed mode</p>
+							</td>
+							<td>int</td>
+						</tr-->
+						<tr>
+							<td>getMaskView()</td>
+							<td>
+								<p>Get mask view, not set to<label>null</label></p>
+							</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>getMainView()</td>
+							<td>
+								<p>Get main layout view, not set to<label>null</label></p>
+							</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>getLeftView()</td>
+							<td>
+								<p>Get left layout view, not set to<label>null</label></p>
+							</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>getTopView()</td>
+							<td>
+								<p>Get top layout view, not set to<label>null</label></p>
+							</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>getRightView()</td>
+							<td>
+								<p>Get right layout view, not set to<label>null</label></p>
+							</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>getBottomView()</td>
+							<td>
+								<p>Get bottom layout view, not set to<label>null</label></p>
+							</td>
+							<td>view</td>
+						</tr>
+						<tr>
+							<td>getMode()</td>
+							<td>
+								<p>Get<label>mode</label>attribute: </p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>: Drawer mode</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>: Cover mode</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>: Fixed mode</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getLeftMode()</td>
+							<td>
+								<p>Get<label>leftMode</label>attribute: </p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>: Drawer mode</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>: Cover mode</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>: Fixed mode</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getTopMode()</td>
+							<td>
+								<p>Get<label>topMode</label>attribute: </p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>: Drawer mode</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>: Cover mode</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>: Fixed mode</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getRightMode()</td>
+							<td>
+								<p>Get<label>rightMode</label>attribute: </p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>: Drawer mode</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>: Cover mode</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>: Fixed mode</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getBottomMode()</td>
+							<td>
+								<p>Get<label>bottomMode</label>attribute: </p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>: Drawer mode</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>: Cover mode</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>: Fixed mode</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getMask()</td>
+							<td>
+								<p>Get<label>mask</label>attribute: </p>
+								<p><label>SwipeDrawer.MASK_NONE</label>: Not open</p>
+								<p><label>SwipeDrawer.MASK_GENERAL</label>: Fixed color</p>
+								<p><label>SwipeDrawer.MASK_GRADUAL</label>: Gradual depth</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getMainType()</td>
+							<td>
+								<p>Get<label>mainType</label>attribute: </p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>: Non sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>: Vertical sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>: Horizontal sliding layout</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getLeftType()</td>
+							<td>
+								<p>Get<label>leftType</label>attribute: </p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>: Non sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>: Vertical sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>: Horizontal sliding layout</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getTopType()</td>
+							<td>
+								<p>Get<label>topType</label>attribute: </p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>: Non sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>: Vertical sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>: Horizontal sliding layout</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getRightType()</td>
+							<td>
+								<p>Get<label>rightType</label>attribute: </p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>: Non sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>: Vertical sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>: Horizontal sliding layout</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getBottomType()</td>
+							<td>
+								<p>Get<label>bottomType</label>attribute: </p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>: Non sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>: Vertical sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>: Horizontal sliding layout</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getMainOpen()</td>
+							<td>
+								<p>Get<label>mainOpen</label>attribute: </p>
+								<p><label>SwipeDrawer.MAIN_OPEN_NONE</label>: Unshielded</p>
+								<p><label>SwipeDrawer.MAIN_OPEN_CLICK</label>: Click only</p>
+								<p><label>SwipeDrawer.MAIN_OPEN_INTERCEPT</label>: Disable all touch events</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getShrinkRange()</td>
+							<td>
+								<p>Get<label>shrinkRange</label>attribute</p>
+							</td>
+							<td>float</td>
+						</tr>
+						<tr>
+							<td>getDragDamping()</td>
+							<td>
+								<p>Get<label>dragDamping</label>attribute</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getDragRange()</td>
+							<td>
+								<p>Get<label>dragRange</label>attribute</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getMaxDragSize()</td>
+							<td>
+								<p>Get<label>maxDragSize</label>attribute</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getDuration()</td>
+							<td>
+								<p>Get<label>duration</label>attribute</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getLeftDragOpen()</td>
+							<td>
+								<p>Get<label>leftDragOpen</label>attribute</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getTopDragOpen()</td>
+							<td>
+								<p>Get<label>topDragOpen</label>attribute</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getRightDragOpen()</td>
+							<td>
+								<p>Get<label>rightDragOpen</label>attribute</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getBottomDragOpen()</td>
+							<td>
+								<p>Get<label>bottomDragOpen</label>attribute</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getShowLayout()</td>
+							<td>
+								<p>Get<label>showLayout</label>attribute</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getAutoClose()</td>
+							<td>
+								<p>Get<label>autoClose</label>attribute</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getMaskClose()</td>
+							<td>
+								<p>Get<label>maskClose</label>attribute</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getMaskColor()</td>
+							<td>
+								<p>Get<label>maskColor</label>attribute</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getScrollOuterDrag()</td>
+							<td>
+								<p>Get<label>scrollOuterDrag</label>attribute</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/><br/>
+				<h2 data-tab="B3">Set attribute</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Method name</th>
+							<th>explain</th>
+							<th>parameter</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>setMainScale(float scale)</td>
+							<td>
+								<p>Set main layout scale</p>
+							</td>
+							<td>
+								<p>scale: <label>float</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainRotation(float rotation)</td>
+							<td>
+								<p>Set mani layout rotation</p>
+							</td>
+							<td>
+								<p>rotation: <label>float</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setIntercept(boolean intercept)</td>
+							<td>
+								<p>Set manual interception of all directional touch events</p>
+							</td>
+							<td>
+								<p>intercept: <label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setIntercept(View view, boolean intercept)</td>
+							<td>
+								<p>Set manual interception of all directional touch events</p>
+							</td>
+							<td>
+								<p>view: <label>Specify direction view</label></p>
+								<p>intercept: <label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setIntercept(int type, boolean intercept)</td>
+							<td>
+								<p>Set manual interception of all directional touch events</p>
+							</td>
+							<td>
+								<p>type: </p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>: Bottom direction</p>
+								<p>intercept: <label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMode(int type)</td>
+							<td>
+								<p>Set<label>mode</label>attribute<br/>The status must be off for the setting to be valid</p>
+							</td>
+							<td>
+								<p>type: </p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>: Drawer mode</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>: Cover mode</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>: Fixed mode</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftMode(int type)</td>
+							<td>
+								<p>Set<label>leftMode</label>attribute<br/>The status must be off for the setting to be valid</p>
+							</td>
+							<td>
+								<p>type: </p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>: Drawer mode</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>: Cover mode</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>: Fixed mode</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightMode(int type)</td>
+							<td>
+								<p>Set<label>rightMode</label>attribute<br/>The status must be off for the setting to be valid</p>
+							</td>
+							<td>
+								<p>type: </p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>: Drawer mode</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>: Cover mode</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>: Fixed mode</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopMode(int type)</td>
+							<td>
+								<p>Set<label>topMode</label>attribute<br/>The status must be off for the setting to be valid</p>
+							</td>
+							<td>
+								<p>type: </p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>: Drawer mode</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>: Cover mode</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>: Fixed mode</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomMode(int type)</td>
+							<td>
+								<p>Set<label>bottomMode</label>attribute<br/>The status must be off for the setting to be valid</p>
+							</td>
+							<td>
+								<p>type: </p>
+								<p><label>SwipeDrawer.MODE_DRAWER</label>: Drawer mode</p>
+								<p><label>SwipeDrawer.MODE_COVER</label>: Cover mode</p>
+								<p><label>SwipeDrawer.MODE_FIXED</label>: Fixed mode</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMask(int type)</td>
+							<td>
+								<p>Set<label>mode</label>attribute</p>
+							</td>
+							<td>
+								<p>type: </p>
+								<p><label>SwipeDrawer.MASK_NONE</label>: Not open</p>
+								<p><label>SwipeDrawer.MASK_GENERAL</label>: Fixed color</p>
+								<p><label>SwipeDrawer.MASK_GRADUAL</label>: Gradual depth</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainType(int type)</td>
+							<td>
+								<p>Set<label>mainType</label>attribute</p>
+							</td>
+							<td>
+								<p>type: </p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>: Non sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>: Vertical sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>: Horizontal sliding layout</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftType(int type)</td>
+							<td>
+								<p>Set<label>leftType</label>attribute</p>
+							</td>
+							<td>
+								<p>type: </p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>: Non sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>: Vertical sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>: Horizontal sliding layout</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopType(int type)</td>
+							<td>
+								<p>Set<label>topType</label>attribute</p>
+							</td>
+							<td>
+								<p>type: </p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>: Non sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>: Vertical sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>: Horizontal sliding layout</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightType(int type)</td>
+							<td>
+								<p>Set<label>rightType</label>attribute</p>
+							</td>
+							<td>
+								<p>type: </p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>: Non sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>: Vertical sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>: Horizontal sliding layout</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomType(int type)</td>
+							<td>
+								<p>Set<label>bottomType</label>attribute</p>
+							</td>
+							<td>
+								<p>type: </p>
+								<p><label>SwipeDrawer.TYPE_VIEW</label>: Non sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_Y</label>: Vertical sliding layout</p>
+								<p><label>SwipeDrawer.TYPE_SCROLL_X</label>: Horizontal sliding layout</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainOpen(int type)</td>
+							<td>
+								<p>Set<label>mainOpen</label>attribute</p>
+							</td>
+							<td>
+								<p>type: </p>
+								<p><label>SwipeDrawer.MAIN_OPEN_NONE</label>: Unshielded</p>
+								<p><label>SwipeDrawer.MAIN_OPEN_CLICK</label>: Click only</p>
+								<p><label>SwipeDrawer.MAIN_OPEN_INTERCEPT</label>: Disable all touch events</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainLayout(int id)</td>
+							<td>
+								<p>Set<label>mainLayout</label>attribute</p>
+							</td>
+							<td>
+								<p>id: <label>Layout ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainLayout(View view)</td>
+							<td>
+								<p>Set<label>mainLayout</label>attribute</p>
+							</td>
+							<td>
+								<p>view: <label>Layout view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftLayout(int id)</td>
+							<td>
+								<p>Set<label>leftLayout</label>attribute</p>
+							</td>
+							<td>
+								<p>id: <label>Layout ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftLayout(View view)</td>
+							<td>
+								<p>Set<label>leftLayout</label>attribute</p>
+							</td>
+							<td>
+								<p>view: <label>Layout view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopLayout(int id)</td>
+							<td>
+								<p>Set<label>topLayout</label>attribute</p>
+							</td>
+							<td>
+								<p>id: <label>Layout ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopLayout(View view)</td>
+							<td>
+								<p>Set<label>topLayout</label>attribute</p>
+							</td>
+							<td>
+								<p>view: <label>Layout view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightLayout(int id)</td>
+							<td>
+								<p>Set<label>rightLayout</label>attribute</p>
+							</td>
+							<td>
+								<p>id: <label>Layout ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightLayout(View view)</td>
+							<td>
+								<p>Set<label>rightLayout</label>attribute</p>
+							</td>
+							<td>
+								<p>view: <label>Layout view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomLayout(int id)</td>
+							<td>
+								<p>Set<label>bottomLayout</label>attribute</p>
+							</td>
+							<td>
+								<p>id: <label>Layout ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomLayout(View view)</td>
+							<td>
+								<p>Set<label>bottomLayout</label>attribute</p>
+							</td>
+							<td>
+								<p>view: <label>Layout view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainScroll(int id)</td>
+							<td>
+								<p>Set<label>mainScroll</label>attribute</p>
+							</td>
+							<td>
+								<p>id: <label>Layout ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMainScroll(View view)</td>
+							<td>
+								<p>Set<label>mainScroll</label>attribute</p>
+							</td>
+							<td>
+								<p>view: <label>Layout view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftScroll(int id)</td>
+							<td>
+								<p>Set<label>leftScroll</label>attribute</p>
+							</td>
+							<td>
+								<p>id: <label>Layout ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftScroll(View view)</td>
+							<td>
+								<p>Set<label>leftScroll</label>attribute</p>
+							</td>
+							<td>
+								<p>view: <label>Layout view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopScroll(int id)</td>
+							<td>
+								<p>Set<label>topScroll</label>attribute</p>
+							</td>
+							<td>
+								<p>id: <label>Layout ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopScroll(View view)</td>
+							<td>
+								<p>Set<label>topScroll</label>attribute</p>
+							</td>
+							<td>
+								<p>view: <label>Layout view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightScroll(int id)</td>
+							<td>
+								<p>Set<label>rightScroll</label>attribute</p>
+							</td>
+							<td>
+								<p>id: <label>Layout ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightScroll(View view)</td>
+							<td>
+								<p>Set<label>rightScroll</label>attribute</p>
+							</td>
+							<td>
+								<p>view: <label>Layout view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomScroll(int id)</td>
+							<td>
+								<p>Set<label>bottomScroll</label>attribute</p>
+							</td>
+							<td>
+								<p>id: <label>Layout ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomScroll(View view)</td>
+							<td>
+								<p>Set<label>bottomScroll</label>attribute</p>
+							</td>
+							<td>
+								<p>view: <label>Layout view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setParentDrawer(int id)</td>
+							<td>
+								<p>Set<label>parentDrawer</label>attribute</p>
+							</td>
+							<td>
+								<p>id: <label>Layout ID</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setParentDrawer(SwipeDrawer view)</td>
+							<td>
+								<p>Set<label>parentDrawer</label>attribute</p>
+							</td>
+							<td>
+								<p>SwipeDrawer: <label>Layout view</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setShrinkRange(float num)</td>
+							<td>
+								<p>Set<label>shrinkRange</label>attribute</p>
+							</td>
+							<td>
+								<p>num: <label>float</label><br/><label>0</label>: Can drag, But it will not turn on or off</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setDragDamping(int num)</td>
+							<td>
+								<p>Set<label>dragDamping</label>attribute</p>
+							</td>
+							<td>
+								<p>num: <label>int</label>0-9<br/><label>10</label>: No damping</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setDragRange(int num)</td>
+							<td>
+								<p>Set<label>dragRange</label>attribute</p>
+							</td>
+							<td>
+								<p>num: <label>int</label><br/><label>0</label>: Full layout drag</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMaxDragSize(int num)</td>
+							<td>
+								<p>Set<label>maxDragSize</label>attribute</p>
+							</td>
+							<td>
+								<p>num: <label>int</label>px</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftDragOpen(boolean bool)</td>
+							<td>
+								<p>Set<label>leftDragOpen</label>attribute</p>
+							</td>
+							<td>
+								<p>bool: <label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopDragOpen(boolean bool)</td>
+							<td>
+								<p>Set<label>topDragOpen</label>attribute</p>
+							</td>
+							<td>
+								<p>bool: <label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightDragOpen(boolean bool)</td>
+							<td>
+								<p>Set<label>rightDragOpen</label>attribute</p>
+							</td>
+							<td>
+								<p>bool: <label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomDragOpen(boolean bool)</td>
+							<td>
+								<p>Set<label>bottomDragOpen</label>attribute</p>
+							</td>
+							<td>
+								<p>bool: <label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setShowLayout(boolean bool)</td>
+							<td>
+								<p>Set<label>showLayout</label>attribute</p>
+							</td>
+							<td>
+								<p>bool: <label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setAutoClose(boolean bool)</td>
+							<td>
+								<p>Set<label>autoClose</label>attribute</p>
+							</td>
+							<td>
+								<p>bool: <label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMaskClose(boolean bool)</td>
+							<td>
+								<p>Set<label>maskClose</label>attribute</p>
+							</td>
+							<td>
+								<p>bool: <label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setMaskColor(int color)</td>
+							<td>
+								<p>Set<label>maskColor</label>attribute</p>
+							</td>
+							<td>
+								<p>int: <label>color</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setDragClose(boolean bool)</td>
+							<td>
+								<p>Set<label>dragClose</label>attribute</p>
+							</td>
+							<td>
+								<p>bool: <label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setScrollOuterDrag(boolean bool)</td>
+							<td>
+								<p>Set<label>scrollOuterDrag</label>attribute</p>
+							</td>
+							<td>
+								<p>bool: <label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setDuration(int ms)</td>
+							<td>
+								<p>Set<label>duration</label>attribute</p>
+							</td>
+							<td>
+								<p>ms: <label>int</label>ms</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setInterpolator(Interpolator interpolator)</td>
+							<td>
+								<p>Set<label>interpolator</label>attribute</p>
+							</td>
+							<td>
+								<p>interpolator: <label>Interpolator</label></p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/><br/>
+				<h2 data-tab="B4">Call Interface</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Method name</th>
+							<th>explain</th>
+							<th>parameter</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>setOnDrawerState(OnDrawerState listener)</td>
+							<td>
+								<p>Listening start, move, start, close and cancel callback</p>
+							</td>
+							<td>
+								<p>listener: <label>OnDrawerState</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setOnDrawerSwitch(OnDrawerSwitch listener)</td>
+							<td>
+								<p>Listening on / off callback</p>
+							</td>
+							<td>
+								<p>listener: <label>OnDrawerSwitch</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setOnDrawerChange(OnDrawerChange listener)</td>
+							<td>
+								<p>Monitor changes and return various statuses by parameters</p>
+							</td>
+							<td>
+								<p>listener: <label>OnDrawerChange</label></p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/><br/>
+				<h2 data-tab="B5">Call method</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Method name</th>
+							<th>explain</th>
+							<th>parameter</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>openDrawer(int type)</td>
+							<td>
+								<p>Open the specified direction</p>
+							</td>
+							<td>
+								<p>int: </p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>: Bottom direction</p>
+							</td>
+						</tr>
+						<tr>
+							<td>openDrawer(int type, boolean anim)</td>
+							<td>
+								<p>Open the specified direction、 Animation settings</p>
+							</td>
+							<td>
+								<p>int: </p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>: Bottom direction</p>
+								<p>anim: <label>true/false</label>Turn on animation</p>
+							</td>
+						</tr>
+						<tr>
+							<td>openDrawer(int type, <br>　　　　　　boolean anim, <br>　　　　　　boolean call)</td>
+							<td>
+								<p>Open the specified direction、 Animation settings、 Callback settings</p>
+							</td>
+							<td>
+								<p>int: </p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>: Bottom direction</p>
+								<p>anim: <label>true/false</label>Turn on animation</p>
+								<p>call: <label>true/false</label>Callback interface</p>
+							</td>
+						</tr>
+						<tr>
+							<td>closeDrawer()</td>
+							<td>
+								<p>close</p>
+							</td>
+							<td>-</td>
+						</tr>
+						<tr>
+							<td>closeDrawer(boolean anim)</td>
+							<td>
+								<p>Close, animation</p>
+							</td>
+							<td>
+								<p>anim: <label>true/false</label>Turn on animation</p>
+							</td>
+						</tr>
+						<tr>
+							<td>closeDrawer(boolean anim, boolean call)</td>
+							<td>
+								<p>Close、 Animation settings、 callback settings</p>
+							</td>
+							<td>
+								<p>anim: <label>true/false</label>Turn on animation</p>
+								<p>call: <label>true/false</label>Callback interface</p>
+							</td>
+						</tr>
+						<tr>
+							<td>closeDrawer(int type)</td>
+							<td>
+								<p>Turn off the specified direction</p>
+							</td>
+							<td>
+								<p>int: </p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>: Bottom direction</p>
+							</td>
+						</tr>
+						<tr>
+							<td>closeDrawer(int type, boolean anim)</td>
+							<td>
+								<p>Turn off the specified direction、 Animation settings</p>
+							</td>
+							<td>
+								<p>int: </p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>: Bottom direction</p>
+								<p>anim: <label>true/false</label>Turn on animation</p>
+							</td>
+						</tr>
+						<tr>
+							<td>closeDrawer(int type, <br>　　　　　　boolean anim, <br>　　　　　　boolean call)</td>
+							<td>
+								<p>Turn off the specified direction、 Animation settings、 callback settings</p>
+							</td>
+							<td>
+								<p>int: </p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>: Bottom direction</p>
+								<p>anim: <label>true/false</label>Turn on animation</p>
+								<p>call: <label>true/false</label>Callback interface</p>
+							</td>
+						</tr>
+						<tr>
+							<td>toggleDrawer(int type)</td>
+							<td>
+								<p>Turns the specified direction on / off</p>
+							</td>
+							<td>
+								<p>int: </p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>: Bottom direction</p>
+							</td>
+						</tr>
+						<tr>
+							<td>toggleDrawer(int type, boolean anim)</td>
+							<td>
+								<p>Turns the specified direction on / off、 Animation settings</p>
+							</td>
+							<td>
+								<p>int: </p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>: Bottom direction</p>
+								<p>anim: <label>true/false</label>Turn on animation</p>
+							</td>
+						</tr>
+						<tr>
+							<td>toggleDrawer(int type, <br>　　　　　　boolean anim, <br>　　　　　　boolean call)</td>
+							<td>
+								<p>Turns the specified direction on / off、 Animation settings、 callback settings</p>
+							</td>
+							<td>
+								<p>int: </p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>: Bottom direction</p>
+								<p>anim: <label>true/false</label>Turn on animation</p>
+								<p>call: <label>true/false</label>Callback interface</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/><br/>
+				<h2 data-tab="B6">Static method</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Method name</th>
+							<th>explain</th>
+							<th>Parameter / return</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>SwipeDrawer.setAllIntercept(boolean bool)</td>
+							<td>
+								<p>Set to mask all <label>SwipeDrawer</label> touch events</p>
+							</td>
+							<td>
+								<p>bool: <label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>SwipeDrawer.getAllIntercept()</td>
+							<td>
+								<p>Get whether <label>SwipeDrawer</label> touch event is shielded</p>
+							</td>
+							<td>
+								<p>boolean</p>
+							</td>
+						</tr>
+						<tr>
+							<td>SwipeDrawer.getParentDrawer(View view)</td>
+							<td>
+								<p>Get the parent of view<label>SwipeDrawer</label></p>
+							</td>
+							<td>
+								<p>SwipeDrawer</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/><br/>
+			</div>
+		</div>
+		<div class="ment-btn"></div>
+	</div>
+	<footer class="footer">
+		<div class="main">
+			<p>Copyright © 2022 <a href="https://github.com/Leaqi" title="Leaqi Github" target="_blank">Leaqi</a> . All Rights Reserved.</p>
+		</div>
+	</footer>
+	<script type="text/javascript" src="https://libs.baidu.com/jquery/1.10.0/jquery.min.js"></script>
+	<script type="text/javascript" src="/libs/js/base.min.js"></script>
+</body>
+</html>
