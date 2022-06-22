@@ -23,6 +23,7 @@
 					<li class="cur"><a href="/SwipeDrawer/" title="使用文档">使用文档</a></li>
 					<li><a href="/SwipeDrawer/code.html" title="功能详解">功能详解</a></li>
 					<li><a href="/SwipeDrawer/pics.html" title="图片演示">图片演示</a></li>
+					<li><a href="/SwipeDrawer/logs.html" title="更新日志">更新日志</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github问题交流">问题交流</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github项目源码">项目源码</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.0/demo.apk" title="下载Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
@@ -74,7 +75,7 @@
 				<p>添加<label>SwipeDrawer</label>依赖：</p>
 				<pre><code class="hljs">dependencies {
     ...
-    implementation <span class="hljs-string">&#x27;cn.Leaqi:SwipeDrawer:1.0&#x27;</span>
+    implementation <span class="hljs-string">&#x27;cn.Leaqi:SwipeDrawer:1.1&#x27;</span>
 }</code></pre>
 				<br/>
 				<p>在布局文件中加入<label>SwipeDrawer</label>：</p>
@@ -410,6 +411,12 @@
 							<td>0</td>
 						</tr>
 						<tr>
+							<td>dragSlop</td>
+							<td>拖拽拦截距离<br/>当拖拽距离大于<label>dragSlop</label>dip时才拦截事件<ins>注：最低版本需 >= 1.1</ins></td>
+							<td>dip</td>
+							<td>5</td>
+						</tr>
+						<tr>
 							<td>maxDragSize</td>
 							<td>最大拖拽高/宽度<br/><label>0</label>：布局高/宽度</td>
 							<td>dip</td>
@@ -676,6 +683,13 @@
 							<td>getDragRange()</td>
 							<td>
 								<p>获取<label>dragRange</label>属性</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getDragSlop()</td>
+							<td>
+								<p>获取<label>dragSlop</label>属性<ins>注：最低版本需 >= 1.1</ins></p>
 							</td>
 							<td>int</td>
 						</tr>
@@ -1186,7 +1200,16 @@
 								<p>设置<label>dragRange</label>属性</p>
 							</td>
 							<td>
-								<p>num：<label>int</label><br/><label>0</label>：全布局拖拽</p>
+								<p>num：<label>int</label>px<br/><label>0</label>：全布局拖拽</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setDragSlop(int num)</td>
+							<td>
+								<p>设置<label>dragSlop</label>属性<ins>注：最低版本需 >= 1.1</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px</p>
 							</td>
 						</tr>
 						<tr>

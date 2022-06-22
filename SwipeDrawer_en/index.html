@@ -23,6 +23,7 @@
 					<li class="cur"><a href="/SwipeDrawer_en/" title="Use Docs">Docs</a></li>
 					<li><a href="/SwipeDrawer_en/code.html" title="Detailed Docs">Detailed</a></li>
 					<li><a href="/SwipeDrawer_en/pics.html" title="Picture Preview">Picture</a></li>
+					<li><a href="/SwipeDrawer_en/logs.html" title="Update Logs">Logs</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github Issues">Issues</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github Project Code">Project Code</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.0/demo.apk" title="Download Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
@@ -74,7 +75,7 @@
 				<p>Add<label>SwipeDrawer</label>dependencies: </p>
 				<pre><code class="hljs">dependencies {
     ...
-    implementation <span class="hljs-string">&#x27;cn.Leaqi:SwipeDrawer:1.0&#x27;</span>
+    implementation <span class="hljs-string">&#x27;cn.Leaqi:SwipeDrawer:1.1&#x27;</span>
 }</code></pre>
 				<br/>
 				<p>Add<label>SwipeDrawer</label>to the layout file: </p>
@@ -410,6 +411,12 @@
 							<td>0</td>
 						</tr>
 						<tr>
+							<td>dragSlop</td>
+							<td>Drag intercept distance<br/>The event is intercepted only when the drag distance is greater than<label>dragSlop</label>dip<ins>Warn：Minimum version required >= 1.1</ins></td>
+							<td>dip</td>
+							<td>5</td>
+						</tr>
+						<tr>
 							<td>maxDragSize</td>
 							<td>Maximum drag height / width<br/><label>0</label>: Layout height / width</td>
 							<td>dip</td>
@@ -676,6 +683,13 @@
 							<td>getDragRange()</td>
 							<td>
 								<p>Get<label>dragRange</label>attribute</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getDragSlop()</td>
+							<td>
+								<p>Get<label>dragSlop</label>attribute<ins>Warn：Minimum version required >= 1.1</ins></p>
 							</td>
 							<td>int</td>
 						</tr>
@@ -1186,7 +1200,16 @@
 								<p>Set<label>dragRange</label>attribute</p>
 							</td>
 							<td>
-								<p>num: <label>int</label><br/><label>0</label>: Full layout drag</p>
+								<p>num: <label>int</label>px<br/><label>0</label>: Full layout drag</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setDragSlop(int num)</td>
+							<td>
+								<p>Set<label>dragSlop</label>attribute<ins>Warn：Minimum version required >= 1.1</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px</p>
 							</td>
 						</tr>
 						<tr>

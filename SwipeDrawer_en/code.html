@@ -23,6 +23,7 @@
 					<li><a href="/SwipeDrawer_en/" title="Use Docs">Docs</a></li>
 					<li class="cur"><a href="/SwipeDrawer_en/code.html" title="Detailed Docs">Detailed</a></li>
 					<li><a href="/SwipeDrawer_en/pics.html" title="Picture Preview">Picture</a></li>
+					<li><a href="/SwipeDrawer_en/logs.html" title="Update Logs">Logs</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github Issues">Issues</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github Project Code">Project Code</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.0/demo.apk" title="Download Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
@@ -79,6 +80,7 @@
 					<li data-btn="A35"><span>shrinkRange</span></li>
 					<li data-btn="A36"><span>dragDamping</span></li>
 					<li data-btn="A37"><span>dragRange</span></li>
+					<li data-btn="A371"><span>dragSlop</span></li>
 					<li data-btn="A38"><span>maxDragSize</span></li>
 					<li data-btn="A39"><span>duration</span></li>
 					<li data-btn="A40"><span>interpolator</span></li>
@@ -579,6 +581,13 @@
 					<ul>
 						<li>Value type: <label>dip</label>, After setting, the dragging and pressing position must be the edge position of <label>dragRange</label> dip before dragging</li>
 						<li>Default value: <label>0</label>, All bureau drag</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A371">dragSlop<em>Warn：Minimum version required >= 1.1</em></h2>
+					<p>Drag intercept distance：</p>
+					<ul>
+						<li>Value type：<label>dip</label>，The event is intercepted only when the drag distance is greater than<label>dragSlop</label>dip</li>
+						<li>Default value：<label>5</label>px</li>
 					</ul>
 					<br/><br/>
 					<h2 data-tab="A38">maxDragSize</h2>

@@ -23,6 +23,7 @@
 					<li><a href="/SwipeDrawer/" title="使用文档">使用文档</a></li>
 					<li class="cur"><a href="/SwipeDrawer/code.html" title="功能详解">功能详解</a></li>
 					<li><a href="/SwipeDrawer/pics.html" title="图片演示">图片演示</a></li>
+					<li><a href="/SwipeDrawer/logs.html" title="更新日志">更新日志</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github问题交流">问题交流</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github项目源码">项目源码</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.0/demo.apk" title="下载Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
@@ -79,6 +80,7 @@
 					<li data-btn="A35"><span>shrinkRange</span></li>
 					<li data-btn="A36"><span>dragDamping</span></li>
 					<li data-btn="A37"><span>dragRange</span></li>
+					<li data-btn="A371"><span>dragSlop</span></li>
 					<li data-btn="A38"><span>maxDragSize</span></li>
 					<li data-btn="A39"><span>duration</span></li>
 					<li data-btn="A40"><span>interpolator</span></li>
@@ -574,11 +576,18 @@
 						<li>默认值为：<label>10</label>，无阻力</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A37">dragRange</h2>
+					<h2 data-tab="A37">dragRange<em>注：最低版本需 >= 1.1</em></h2>
 					<p>边缘拖拽：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01d4db1d88998f2276.gif"></span></p>
 					<ul>
 						<li>值类型为：<label>dip</label>，设定后拖拽按下位置必须是<label>dragRange</label>dip的边缘位置才可以拖拽</li>
 						<li>默认值为：<label>0</label>，全部局拖拽</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A371">dragSlop</h2>
+					<p>拖拽拦截距离：</p>
+					<ul>
+						<li>值类型为：<label>dip</label>，当拖拽距离大于<label>dragSlop</label>dip时才拦截事件</li>
+						<li>默认值为：<label>5</label>px</li>
 					</ul>
 					<br/><br/>
 					<h2 data-tab="A38">maxDragSize</h2>
