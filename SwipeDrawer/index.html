@@ -26,7 +26,7 @@
 					<li><a href="/SwipeDrawer/logs.html" title="更新日志">更新日志</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github问题交流">问题交流</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github项目源码">项目源码</a></li>
-					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.3/demo.apk" title="下载Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.4/demo.apk" title="下载Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
 					<li class="r"><a href="/SwipeDrawer_en/" title="Switch to English"><img src="/libs/images/Language-English.svg"></a></li>
 				</ul>
 			</div>
@@ -75,7 +75,7 @@
 				<p>添加<label>SwipeDrawer</label>依赖：</p>
 				<pre><code class="hljs">dependencies {
     ...
-    implementation <span class="hljs-string">&#x27;cn.Leaqi:SwipeDrawer:1.3&#x27;</span>
+    implementation <span class="hljs-string">&#x27;cn.Leaqi:SwipeDrawer:1.4&#x27;</span>
 }</code></pre>
 				<br/>
 				<p>在布局文件中加入<label>SwipeDrawer</label>：</p>
@@ -387,8 +387,20 @@
 							<td>true</td>
 						</tr>
 						<tr>
+							<td>dragCloseType</td>
+							<td>
+								<p>拖拽关闭类型：</p>
+								<p><label>all</label>：全布局</p>
+								<p><label>main</label>：主布局</p>
+								<p><label>drawer</label>：抽屉布局</p>
+								<ins>注：最低版本需 >= 1.4</ins>
+							</td>
+							<td>enum</td>
+							<td>all</td>
+						</tr>
+						<tr>
 							<td>scrollOuterDrag</td>
-							<td>滑动布局之外是否允许拖拽</td>
+							<td>滑动布局之外是否允许拖拽关闭</td>
 							<td>boolean</td>
 							<td>false</td>
 						</tr>
@@ -773,6 +785,13 @@
 							<td>getScrollOuterDrag()</td>
 							<td>
 								<p>获取<label>scrollOuterDrag</label>属性</p>
+							</td>
+							<td>boolean</td>
+						</tr>
+						<tr>
+							<td>getAutoLayout()</td>
+							<td>
+								<p>获取<label>autoLayout</label>属性<ins>注：最低版本需 >= 1.4</ins></p>
 							</td>
 							<td>boolean</td>
 						</tr>
@@ -1312,6 +1331,15 @@
 							<td>setScrollOuterDrag(boolean bool)</td>
 							<td>
 								<p>设置<label>scrollOuterDrag</label>属性</p>
+							</td>
+							<td>
+								<p>bool：<label>true/false</label></p>
+							</td>
+						</tr>
+						<tr>
+							<td>setAutoLayout(boolean bool)</td>
+							<td>
+								<p>设置<label>autoLayout</label>属性<ins>注：最低版本需 >= 1.4</ins></p>
 							</td>
 							<td>
 								<p>bool：<label>true/false</label></p>

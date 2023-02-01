@@ -26,7 +26,7 @@
 					<li><a href="/SwipeDrawer/logs.html" title="更新日志">更新日志</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github问题交流">问题交流</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github项目源码">项目源码</a></li>
-					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.3/demo.apk" title="下载Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.4/demo.apk" title="下载Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
 					<li class="r"><a href="/SwipeDrawer_en/" title="Switch to English"><img src="/libs/images/Language-English.svg"></a></li>
 				</ul>
 			</div>
@@ -76,6 +76,7 @@
 					<li data-btn="A31"><span>maskClose</span></li>
 					<li data-btn="A32"><span>maskColor</span></li>
 					<li data-btn="A33"><span>dragClose</span></li>
+					<li data-btn="A331"><span>dragCloseType</span></li>
 					<li data-btn="A34"><span>scrollOuterDrag</span></li>
 					<li data-btn="A341"><span>autoLayout</span></li>
 					<li data-btn="A35"><span>shrinkRange</span></li>
@@ -107,7 +108,7 @@
 		<div class="main-right">
 			<div class="content">
 				<h1 data-tab="A0">属性介绍</h1>
-					<h2 data-tab="A1">mode</h2>
+					<h2 data-tab="A1" id="mode">mode</h2>
 					<p>打开模式分为三种：</p>
 					<ul>
 						<li><label>drawer</label>：抽屉模式，主布局与抽屉布局同时移动<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01df35d69120a8c91c.gif"></div></li>
@@ -115,7 +116,7 @@
 						<li><label>fixed</label>：固定模式，仅主布局移动<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01891cb8d6f671b918.gif"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A2">open</h2>
+					<h2 data-tab="A2" id="open">open</h2>
 					<p>初始化状态，默认打开指定方向：
 					<ul>
 						<li><label>left</label>：默认打开Left<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0151e703c926e58f2d.jpg"></div></li>
@@ -124,7 +125,7 @@
 						<li><label>bottom</label>：默认打开Bottom<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0100f400d09e93eb75.jpg"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A3">mask</h2>
+					<h2 data-tab="A3" id="mask">mask</h2>
 					<p>背景遮罩：</p>
 					<ul>
 						<li><label>none</label>：不开启<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t010e78f91e20d39e3a.gif"></div></li>
@@ -132,7 +133,7 @@
 						<li><label>gradual</label>：遮罩逐渐深浅<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0120d45ed1909b1394.gif"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A4">mainLayout</h2>
+					<h2 data-tab="A4" id="mainLayout">mainLayout</h2>
 					<p>指定主布局ID：</p>
 					<ul>
 						<li>若未指定该属性，则默认为第一个未指定ID的子布局</li>
@@ -149,7 +150,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A5">leftLayout</h2>
+					<h2 data-tab="A5" id="leftLayout">leftLayout</h2>
 					<p>指定Left布局ID：</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -163,7 +164,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A6">topLayout</h2>
+					<h2 data-tab="A6" id="topLayout">topLayout</h2>
 					<p>指定Top布局ID：</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -177,7 +178,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A7">rightLayout</h2>
+					<h2 data-tab="A7" id="rightLayout">rightLayout</h2>
 					<p>指定Right布局ID：</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -191,7 +192,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A8">bottomLayout</h2>
+					<h2 data-tab="A8" id="bottomLayout">bottomLayout</h2>
 					<p>指定Bottom布局ID：</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -205,7 +206,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A9">mainType</h2>
+					<h2 data-tab="A9" id="mainType">mainType</h2>
 					<p>主布局类型：</p>
 					<ul>
 						<li><label>view</label>：非滑动布局，默认为该项</li>
@@ -227,7 +228,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A10">leftType</h2>
+					<h2 data-tab="A10" id="leftType">leftType</h2>
 					<p>Left布局类型：</p>
 					<ul>
 						<li><label>view</label>：非滑动布局，默认为该项</li>
@@ -249,7 +250,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A11">topType</h2>
+					<h2 data-tab="A11" id="topType">topType</h2>
 					<p>Top布局类型：</p>
 					<ul>
 						<li><label>view</label>：非滑动布局，默认为该项</li>
@@ -271,7 +272,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A12">rightType</h2>
+					<h2 data-tab="A12" id="rightType">rightType</h2>
 					<p>Right布局类型：</p>
 					<ul>
 						<li><label>view</label>：非滑动布局，默认为该项</li>
@@ -293,7 +294,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A13">bottomType</h2>
+					<h2 data-tab="A13" id="bottomType">bottomType</h2>
 					<p>Bottom布局类型：</p>
 					<ul>
 						<li><label>view</label>：非滑动布局，默认为该项</li>
@@ -315,31 +316,31 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A14">leftMode</h2>
+					<h2 data-tab="A14" id="leftMode">leftMode</h2>
 					<ul>
 						<li>该属性指定Left方向打开模式</li>
 						<li>不设置则继承<label>mode</label>的打开方式</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A15">topMode</h2>
+					<h2 data-tab="A15" id="topMode">topMode</h2>
 					<ul>
 						<li>该属性指定Top方向打开模式</li>
 						<li>不设置则继承<label>mode</label>的打开方式</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A16">rightMode</h2>
+					<h2 data-tab="A16" id="rightMode">rightMode</h2>
 					<ul>
 						<li>该属性指定Right方向打开模式</li>
 						<li>不设置则继承<label>mode</label>的打开方式</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A17">bottomMode</h2>
+					<h2 data-tab="A17" id="bottomMode">bottomMode</h2>
 					<ul>
 						<li>该属性指定Bottom方向打开模式</li>
 						<li>不设置则继承<label>mode</label>的打开方式</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A18">mainOpen</h2>
+					<h2 data-tab="A18" id="mainOpen">mainOpen</h2>
 					<p>打开后主布局触摸事件：开启遮罩后该属性设置将无效</p>
 					<ul>
 						<li><label>none</label>：不屏蔽<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01fd0d27d987a5cc09.gif"></div></li>
@@ -347,7 +348,7 @@
 						<li><label>intercept</label>：禁止所有触摸事件<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t018dc1e09d53e7ce63.gif"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A19">parentDrawer</h2>
+					<h2 data-tab="A19" id="parentDrawer">parentDrawer</h2>
 					<p>指定上一级的<label>SwipeDrawer</label>布局ID，嵌套时使用：更多层嵌套以此内推</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/rootSwipe&quot;</span>
@@ -375,7 +376,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A20">mainScroll</h2>
+					<h2 data-tab="A20" id="mainScroll">mainScroll</h2>
 					<p>指定主布局下滑动布局ID：子布局存在滑动布局，且滑动方向与<label>SwipeDrawer</label>一致时需设置该属性解决滑动优先级的问题</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -394,7 +395,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A21">leftScroll</h2>
+					<h2 data-tab="A21" id="leftScroll">leftScroll</h2>
 					<p>指定Left布局下滑动布局ID：子布局存在滑动布局，且滑动方向与<label>SwipeDrawer</label>一致时需设置该属性解决滑动优先级的问题</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -415,7 +416,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A22">topScroll</h2>
+					<h2 data-tab="A22" id="topScroll">topScroll</h2>
 					<p>指定Top布局下滑动布局ID：子布局存在滑动布局，且滑动方向与<label>SwipeDrawer</label>一致时需设置该属性解决滑动优先级的问题</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -436,7 +437,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A23">rightScroll</h2>
+					<h2 data-tab="A23" id="rightScroll">rightScroll</h2>
 					<p>指定Right布局下滑动布局ID：子布局存在滑动布局，且滑动方向与<label>SwipeDrawer</label>一致时需设置该属性解决滑动优先级的问题</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -457,7 +458,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A24">bottomScroll</h2>
+					<h2 data-tab="A24" id="bottomScroll">bottomScroll</h2>
 					<p>指定Bottom布局下滑动布局ID：子布局存在滑动布局，且滑动方向与<label>SwipeDrawer</label>一致时需设置该属性解决滑动优先级的问题</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -478,7 +479,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A25">leftDragOpen</h2>
+					<h2 data-tab="A25" id="leftDragOpen">leftDragOpen</h2>
 					<p>Left布局拖拽打开：设为<label>false</label>后Left布局将无法通过拖拽的方式打开，但关闭不受此限制，默认值为：<label>true</label></p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -487,7 +488,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A26">topDragOpen</h2>
+					<h2 data-tab="A26" id="topDragOpen">topDragOpen</h2>
 					<p>Top布局拖拽打开：设为<label>false</label>后Top布局将无法通过拖拽的方式打开，但关闭不受此限制，默认值为：<label>true</label></p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -496,7 +497,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A27">rightDragOpen</h2>
+					<h2 data-tab="A27" id="rightDragOpen">rightDragOpen</h2>
 					<p>Right布局拖拽打开：设为<label>false</label>后Right布局将无法通过拖拽的方式打开，但关闭不受此限制，默认值为：<label>true</label></p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -505,7 +506,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A28">bottomDragOpen</h2>
+					<h2 data-tab="A28" id="bottomDragOpen">bottomDragOpen</h2>
 					<p>Bottom布局拖拽打开：设为<label>false</label>后Bottom布局将无法通过拖拽的方式打开，但关闭不受此限制，默认值为：<label>true</label></p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -514,7 +515,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A29">showLayout</h2>
+					<h2 data-tab="A29" id="showLayout">showLayout</h2>
 					<p>非当前操作的布局是否隐藏，默认为<label>false</label></p>
 					<p>图为<label>mode</label>固定模式下，整体布局透明的50%演示</p>
 					<ul>
@@ -522,21 +523,21 @@
 						<li><label>false</label>：隐藏<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t012bb4d200a124a054.gif"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A30">autoClose</h2>
+					<h2 data-tab="A30" id="autoClose">autoClose</h2>
 					<p>打开后是否关闭其他<label>SwipeDrawer</label>：设为<label>true</label>，打开后则会关闭其他<label>autoClose</label>为<label>true</label>的<label>SwipeDrawer</label></p>
 					<ul>
 						<li><label>true</label>：自动关闭<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t014e66921fe0b373ff.gif"></div></li>
 						<li><label>false</label>：默认值，可同时打开多个<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01b68f98bbc9b6896a.gif"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A31">maskClose</h2>
+					<h2 data-tab="A31" id="maskClose">maskClose</h2>
 					<p>点击遮罩后关闭<label>SwipeDrawer</label>：设为<label>true</label>，且开启<label>mask</label>后点击遮罩背景会关闭当前<label>SwipeDrawer</label></p>
 					<ul>
 						<li><label>true</label>：点击关闭<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t019ea3e2b8816ac646.gif"></div></li>
 						<li><label>false</label>：默认值，无操作</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A32">maskColor</h2>
+					<h2 data-tab="A32" id="maskColor">maskColor</h2>
 					<p>遮罩颜色：默认值颜色为<label>#80000000</label></p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -546,7 +547,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A33">dragClose</h2>
+					<h2 data-tab="A33" id="dragClose">dragClose</h2>
 					<p>允许拖拽关闭：与<label>leftDragOpen</label>、<label>topDragOpen</label>、<label>rightDragOpen</label>、<label>bottomDragOpen</label>拖拽打开同理</p>
 					<p>设为<label>false</label>将无法通过拖拽的方式关闭，但打开不受此限制，默认值为：<label>true</label></p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
@@ -556,21 +557,29 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A34">scrollOuterDrag</h2>
-					<p>滑动布局之外是否允许拖拽：抽屉布局各个方向下子滑动布局之外的布局是否允许拖拽关闭，默认值为：<label>false</label></p>
+					<h2 data-tab="A331" id="dragCloseType">dragCloseType<em>注：最低版本需 >= 1.4</em></h2>
+					<p>拖拽关闭类型：限制主布局、抽屉布局、或者全局拖拽关闭，默认值为：<label>all</label></p>
+					<ul>
+						<li><label>all</label>：全布局<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01de70b63889699dd0.gif"></div></li>
+						<li><label>main</label>：主布局<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01ef25d8fc0577ef9d.gif"></div></li>
+						<li><label>drawer</label>：抽屉布局<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0105f0747b8ce2c5c9.gif"></div></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A34" id="scrollOuterDrag">scrollOuterDrag</h2>
+					<p>滑动布局之外是否允许拖拽关闭：抽屉布局各个方向下子滑动布局之外的布局是否允许拖拽关闭，默认值为：<label>false</label></p>
 					<ul>
 						<li><label>true</label>：任何情况下都允许<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0184184b4f523ce624.gif"></div></li>
 						<li><label>false</label>：子滑动布局到顶或到底不可滑动才允许<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t019dbea0eb36fa3b62.gif"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A341">autoLayout<em>注：最低版本需 >= 1.2</em></h2>
+					<h2 data-tab="A341" id="autoLayout">autoLayout<em>注：最低版本需 >= 1.2</em></h2>
 					<p>布局自动更新：当布局尺寸发生变化将自动更新，默认值为：<label>true</label></p>
 					<ul>
 						<li><label>true</label>：自动更新</li>
 						<li><label>false</label>：不自动更新</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A35">shrinkRange</h2>
+					<h2 data-tab="A35" id="shrinkRange">shrinkRange</h2>
 					<p>拖拽距离：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01fde8e23b90ca4fc2.gif"></span></p>
 					<ul>
 						<li>拖拽方向高/宽度 除以 <label>shrinkRange</label>，拖拽到达距离后才会开启或关闭，否则回到原状态</li>
@@ -578,42 +587,42 @@
 						<li><label>0</label>：可以拖拽，但不会开启或关闭</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A36">dragDamping</h2>
+					<h2 data-tab="A36" id="dragDamping">dragDamping</h2>
 					<p>拖拽阻力：0-9<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t018d3aa4860ec083ac.gif"></span></p>
 					<ul>
 						<li>值越小阻力越大</li>
 						<li>默认值为：<label>10</label>，无阻力</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A37">dragRange</h2>
+					<h2 data-tab="A37" id="dragRange">dragRange</h2>
 					<p>边缘拖拽：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01d4db1d88998f2276.gif"></span></p>
 					<ul>
 						<li>值类型为：<label>dip</label>，设定后拖拽按下位置必须是<label>dragRange</label>dip的边缘位置才可以拖拽</li>
 						<li>默认值为：<label>0</label>，全部局拖拽</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A371">dragSlop<em>注：最低版本需 >= 1.1</em></h2>
+					<h2 data-tab="A371" id="dragSlop">dragSlop<em>注：最低版本需 >= 1.1</em></h2>
 					<p>拖拽拦截距离：</p>
 					<ul>
 						<li>值类型为：<label>dip</label>，当拖拽距离大于<label>dragSlop</label>dip时才拦截事件</li>
 						<li>默认值为：<label>5</label>px</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A38">maxDragSize</h2>
+					<h2 data-tab="A38" id="maxDragSize">maxDragSize</h2>
 					<p>最大拖拽高/宽度：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t014da22f9cf70514da.gif"></span></p>
 					<ul>
 						<li>值类型为：<label>dip</label>，设定后打开时可拖拽至<label>maxDragSize</label>设定的距离</li>
 						<li>默认值为：<label>0</label>，布局高/宽度</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A39">duration</h2>
+					<h2 data-tab="A39" id="duration">duration</h2>
 					<p>动画速度：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t014e602378c6d27e87.gif"></span></p>
 					<ul>
 						<li>值类型为：<label>int</label></li>
 						<li>默认值为：<label>200</label></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A40">interpolator</h2>
+					<h2 data-tab="A40" id="interpolator">interpolator</h2>
 					<p>动画插值器：</p>
 					<ul>
 						<li>减速：<label>@android:anim/decelerate_interpolator</label><map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01097f6109d9290f98.gif"></span></li>
@@ -623,7 +632,7 @@
 					</ul>
 					<br/><br/>
 				<h1 data-tab="B0">回调接口</h1>
-				<h2 data-tab="B1">OnDrawerState</h2>
+				<h2 data-tab="B1" id="OnDrawerState">OnDrawerState</h2>
 				<p>监听开始、移动、开启、关闭、取消回调</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 swipeDrawer.setOnDrawerState(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OnDrawerState</span>() {
@@ -655,7 +664,7 @@ swipeDrawer.setOnDrawerState(<span class="hljs-keyword">new</span> <span class="
     }
 });</code></pre>
 				<br/><br/>
-				<h2 data-tab="B2">OnDrawerSwitch</h2>
+				<h2 data-tab="B2" id="OnDrawerSwitch">OnDrawerSwitch</h2>
 				<p>监听开启、关闭回调</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 swipeDrawer.setOnDrawerSwitch(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OnDrawerSwitch</span>() {
@@ -671,7 +680,7 @@ swipeDrawer.setOnDrawerSwitch(<span class="hljs-keyword">new</span> <span class=
     }
 });</code></pre>
 				<br/><br/>
-				<h2 data-tab="B3">OnDrawerChange</h2>
+				<h2 data-tab="B3" id="OnDrawerChange">OnDrawerChange</h2>
 				<p>监听改变，由参数返回各种状态</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 swipeDrawer.setOnDrawerChange(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OnDrawerChange</span>() {
@@ -716,7 +725,7 @@ swipeDrawer.setOnDrawerChange(<span class="hljs-keyword">new</span> <span class=
 });</code></pre>
 				<br/><br/>
 				<h1 data-tab="C0">调用方法</h1>
-				<h2 data-tab="C1">openDrawer</h2>
+				<h2 data-tab="C1" id="openDrawer">openDrawer</h2>
 				<p>调用打开方法</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 
@@ -729,7 +738,7 @@ swipeDrawer.openDrawer(SwipeDrawer.DIRECTION_TOP, <span class="hljs-literal">fal
 <span class="hljs-comment">// 打开 Right 方向，使用动画，不使用回调接口</span>
 swipeDrawer.openDrawer(SwipeDrawer.DIRECTION_RIGHT, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);</code></pre>
 				<br/><br/>
-				<h2 data-tab="C2">closeDrawer</h2>
+				<h2 data-tab="C2" id="closeDrawer">closeDrawer</h2>
 				<p>调用关闭方法</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 
@@ -751,7 +760,7 @@ swipeDrawer.closeDrawer(SwipeDrawer.DIRECTION_TOP, <span class="hljs-literal">fa
 <span class="hljs-comment">// 关闭 Right 方向，使用动画，不使用回调接口</span>
 swipeDrawer.closeDrawer(SwipeDrawer.DIRECTION_RIGHT, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);</code></pre>
 				<br/><br/>
-				<h2 data-tab="C3">toggleDrawer</h2>
+				<h2 data-tab="C3" id="toggleDrawer">toggleDrawer</h2>
 				<p>调用打开或者关闭方法</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 
@@ -764,7 +773,7 @@ swipeDrawer.toggleDrawer(SwipeDrawer.DIRECTION_TOP, <span class="hljs-literal">f
 <span class="hljs-comment">// 打开或者关闭 Right 方向，使用动画，不使用回调接口</span>
 swipeDrawer.toggleDrawer(SwipeDrawer.DIRECTION_RIGHT, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);</code></pre>
 				<br/><br/>
-				<h2 data-tab="C4">drawerLayout<em>注：最低版本需 >= 1.2</em></h2>
+				<h2 data-tab="C4" id="drawerLayout">drawerLayout<em>注：最低版本需 >= 1.2</em></h2>
 				<p>更新布局</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 
@@ -772,7 +781,7 @@ swipeDrawer.toggleDrawer(SwipeDrawer.DIRECTION_RIGHT, <span class="hljs-literal"
 swipeDrawer.drawerLayout();</code></pre>
 				<br/><br/>
 				<h1 data-tab="D0">全局方法</h1>
-				<h2 data-tab="D1">setAllIntercept</h2>
+				<h2 data-tab="D1" id="setAllIntercept">setAllIntercept</h2>
 				<p>设置屏蔽所有<label>SwipeDrawer</label>触摸事件</p>
 				<pre><code class="hljs"><span class="hljs-comment">// 屏蔽所有 SwipeDrawer 触摸事件</span>
 SwipeDrawer.setAllIntercept(<span class="hljs-literal">true</span>);
@@ -780,7 +789,7 @@ SwipeDrawer.setAllIntercept(<span class="hljs-literal">true</span>);
 <span class="hljs-comment">// 取消屏蔽</span>
 SwipeDrawer.setAllIntercept(<span class="hljs-literal">false</span>);</code></pre>
 				<br/><br/>
-				<h2 data-tab="D2">getAllIntercept</h2>
+				<h2 data-tab="D2" id="getAllIntercept">getAllIntercept</h2>
 				<p>获取<label>SwipeDrawer</label>触摸事件是否屏蔽</p>
 				<pre><code class="hljs"><span class="hljs-comment">// 获取触摸事件是否被屏蔽</span>
 <span class="hljs-keyword">if</span> (SwipeDrawer.getAllIntercept()) {
@@ -789,7 +798,7 @@ SwipeDrawer.setAllIntercept(<span class="hljs-literal">false</span>);</code></pr
     <span class="hljs-comment">// 没屏蔽</span>
 }</code></pre>
 				<br/><br/>
-				<h2 data-tab="D3">getParentDrawer</h2>
+				<h2 data-tab="D3" id="getParentDrawer">getParentDrawer</h2>
 				<p>获取view的父级<label>SwipeDrawer</label></p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">View</span> <span class="hljs-variable">view</span> <span class="hljs-operator">=</span> findViewById(R.id.view);
 <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">getSwipeDrawer</span> <span class="hljs-operator">=</span> SwipeDrawer.getParentDrawer(view);
@@ -800,7 +809,7 @@ SwipeDrawer.setAllIntercept(<span class="hljs-literal">false</span>);</code></pr
 }</code></pre>
 				<br/><br/>
 				<h1 data-tab="E0">其他</h1>
-				<h2 data-tab="E1">DrawerHolder</h2>
+				<h2 data-tab="E1" id="DrawerHolder">DrawerHolder</h2>
 				<p><label>DrawerHolder</label>类作用是用于<label>item</label>下<label>SwipeDrawer</label>非自动关闭的情况在<label>ListView</label>、<label>RecyclerView</label>等有回收机制的布局保存状态</p>
 				<pre><strong>DrawerHolder类的使用：</strong><code class="hljs"><span class="hljs-type">DrawerHolder</span> <span class="hljs-variable">drawerHolder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DrawerHolder</span>();
 

@@ -26,7 +26,7 @@
 					<li><a href="/SwipeDrawer_en/logs.html" title="Update Logs">Logs</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github Issues">Issues</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github Project Code">Project Code</a></li>
-					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.3/demo.apk" title="Download Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.4/demo.apk" title="Download Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
 					<li class="r"><a href="/SwipeDrawer/" title="切换中文版"><img src="/libs/images/Language-Chinese.svg"></a></li>
 				</ul>
 			</div>
@@ -76,6 +76,7 @@
 					<li data-btn="A31"><span>maskClose</span></li>
 					<li data-btn="A32"><span>maskColor</span></li>
 					<li data-btn="A33"><span>dragClose</span></li>
+					<li data-btn="A331"><span>dragCloseType</span></li>
 					<li data-btn="A34"><span>scrollOuterDrag</span></li>
 					<li data-btn="A341"><span>autoLayout</span></li>
 					<li data-btn="A35"><span>shrinkRange</span></li>
@@ -107,7 +108,7 @@
 		<div class="main-right">
 			<div class="content">
 				<h1 data-tab="A0">Attribute explain</h1>
-					<h2 data-tab="A1">mode</h2>
+					<h2 data-tab="A1" id="mode">mode</h2>
 					<p>There are three open modes: </p>
 					<ul>
 						<li><label>drawer</label>: Drawer mode, The main layout moves simultaneously with the drawer layout<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01df35d69120a8c91c.gif"></div></li>
@@ -115,7 +116,7 @@
 						<li><label>fixed</label>: Fixed mode, Main layout move only<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01891cb8d6f671b918.gif"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A2">open</h2>
+					<h2 data-tab="A2" id="open">open</h2>
 					<p>Initialization status, The specified direction is turned on by default: 
 					<ul>
 						<li><label>left</label>: Left is on by default<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0151e703c926e58f2d.jpg"></div></li>
@@ -124,7 +125,7 @@
 						<li><label>bottom</label>: Bottom is on by default<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0100f400d09e93eb75.jpg"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A3">mask</h2>
+					<h2 data-tab="A3" id="mask">mask</h2>
 					<p>Background mask: </p>
 					<ul>
 						<li><label>none</label>: Not open<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t010e78f91e20d39e3a.gif"></div></li>
@@ -132,7 +133,7 @@
 						<li><label>gradual</label>: Gradual depth<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0120d45ed1909b1394.gif"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A4">mainLayout</h2>
+					<h2 data-tab="A4" id="mainLayout">mainLayout</h2>
 					<p>Specifies the main layout ID: </p>
 					<ul>
 						<li>If this attribute is not specified, It defaults to the first sub layout with no ID specified</li>
@@ -149,7 +150,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A5">leftLayout</h2>
+					<h2 data-tab="A5" id="leftLayout">leftLayout</h2>
 					<p>Specifies the left layout ID: </p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -163,7 +164,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A6">topLayout</h2>
+					<h2 data-tab="A6" id="topLayout">topLayout</h2>
 					<p>Specifies the top layout ID: </p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -177,7 +178,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A7">rightLayout</h2>
+					<h2 data-tab="A7" id="rightLayout">rightLayout</h2>
 					<p>Specifies the right layout ID: </p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -191,7 +192,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A8">bottomLayout</h2>
+					<h2 data-tab="A8" id="bottomLayout">bottomLayout</h2>
 					<p>Specifies the bottom layout ID: </p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -205,7 +206,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A9">mainType</h2>
+					<h2 data-tab="A9" id="mainType">mainType</h2>
 					<p>Main layout type: </p>
 					<ul>
 						<li><label>view</label>: Non sliding layout, The default is this item</li>
@@ -227,7 +228,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A10">leftType</h2>
+					<h2 data-tab="A10" id="leftType">leftType</h2>
 					<p>Left layout type: </p>
 					<ul>
 						<li><label>view</label>: Non sliding layout, The default is this item</li>
@@ -249,7 +250,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A11">topType</h2>
+					<h2 data-tab="A11" id="topType">topType</h2>
 					<p>Top layout type: </p>
 					<ul>
 						<li><label>view</label>: Non sliding layout, The default is this item</li>
@@ -271,7 +272,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A12">rightType</h2>
+					<h2 data-tab="A12" id="rightType">rightType</h2>
 					<p>Right layout type: </p>
 					<ul>
 						<li><label>view</label>: Non sliding layout, The default is this item</li>
@@ -293,7 +294,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A13">bottomType</h2>
+					<h2 data-tab="A13" id="bottomType">bottomType</h2>
 					<p>Bottom layout type: </p>
 					<ul>
 						<li><label>view</label>: Non sliding layout, The default is this item</li>
@@ -315,31 +316,31 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A14">leftMode</h2>
+					<h2 data-tab="A14" id="leftMode">leftMode</h2>
 					<ul>
 						<li>This attribute specifies the left direction on mode</li>
 						<li>If it is not set, it inherits the opening mode of <label>mode</label></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A15">topMode</h2>
+					<h2 data-tab="A15" id="topMode">topMode</h2>
 					<ul>
 						<li>This attribute specifies the top direction on mode</li>
 						<li>If it is not set, it inherits the opening mode of <label>mode</label></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A16">rightMode</h2>
+					<h2 data-tab="A16" id="rightMode">rightMode</h2>
 					<ul>
 						<li>This attribute specifies the right direction on mode</li>
 						<li>If it is not set, it inherits the opening mode of <label>mode</label></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A17">bottomMode</h2>
+					<h2 data-tab="A17" id="bottomMode">bottomMode</h2>
 					<ul>
 						<li>This attribute specifies the bottom direction on mode</li>
 						<li>If it is not set, it inherits the opening mode of <label>mode</label></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A18">mainOpen</h2>
+					<h2 data-tab="A18" id="mainOpen">mainOpen</h2>
 					<p>Main layout touch event after opening: This property setting is invalid when the mask is turned on</p>
 					<ul>
 						<li><label>none</label>: Unshielded<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01fd0d27d987a5cc09.gif"></div></li>
@@ -347,7 +348,7 @@
 						<li><label>intercept</label>: Disable all touch events<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t018dc1e09d53e7ce63.gif"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A19">parentDrawer</h2>
+					<h2 data-tab="A19" id="parentDrawer">parentDrawer</h2>
 					<p>Specifies the <label>SwipeDrawer</label> layout ID of the previous level, Use when nesting: more layers of nesting are used to push in</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/rootSwipe&quot;</span>
@@ -375,7 +376,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A20">mainScroll</h2>
+					<h2 data-tab="A20" id="mainScroll">mainScroll</h2>
 					<p>Specifies the sliding layout ID under the main layout: If the sub layout has a sliding layout and the sliding direction is consistent with <label>SwipeDrawer</label>, this attribute should be set to solve the problem of sliding priority</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -394,7 +395,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A21">leftScroll</h2>
+					<h2 data-tab="A21" id="leftScroll">leftScroll</h2>
 					<p>Specifies the sliding layout ID under the left layout: If the sub layout has a sliding layout and the sliding direction is consistent with <label>SwipeDrawer</label>, this attribute should be set to solve the problem of sliding priority</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -415,7 +416,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A22">topScroll</h2>
+					<h2 data-tab="A22" id="topScroll">topScroll</h2>
 					<p>Specifies the sliding layout ID under the top layout: If the sub layout has a sliding layout and the sliding direction is consistent with <label>SwipeDrawer</label>, this attribute should be set to solve the problem of sliding priority</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -436,7 +437,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A23">rightScroll</h2>
+					<h2 data-tab="A23" id="rightScroll">rightScroll</h2>
 					<p>Specifies the sliding layout ID under the right layout: If the sub layout has a sliding layout and the sliding direction is consistent with <label>SwipeDrawer</label>, this attribute should be set to solve the problem of sliding priority</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -457,7 +458,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A24">bottomScroll</h2>
+					<h2 data-tab="A24" id="bottomScroll">bottomScroll</h2>
 					<p>Specifies the sliding layout ID under the bottom layout: If the sub layout has a sliding layout and the sliding direction is consistent with <label>SwipeDrawer</label>, this attribute should be set to solve the problem of sliding priority</p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -478,7 +479,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A25">leftDragOpen</h2>
+					<h2 data-tab="A25" id="leftDragOpen">leftDragOpen</h2>
 					<p>Left layout drag open: When set to <label>false</label>, the left layout cannot be opened by dragging, However, closing is not subject to this restriction, Default value: <label>true</label></p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -487,7 +488,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A26">topDragOpen</h2>
+					<h2 data-tab="A26" id="topDragOpen">topDragOpen</h2>
 					<p>Top layout drag open: When set to <label>false</label>, the top layout cannot be opened by dragging, However, closing is not subject to this restriction, Default value: <label>true</label></p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -496,7 +497,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A27">rightDragOpen</h2>
+					<h2 data-tab="A27" id="rightDragOpen">rightDragOpen</h2>
 					<p>Right layout drag open: When set to <label>false</label>, the right layout cannot be opened by dragging, However, closing is not subject to this restriction, Default value: <label>true</label></p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -505,7 +506,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A28">bottomDragOpen</h2>
+					<h2 data-tab="A28" id="bottomDragOpen">bottomDragOpen</h2>
 					<p>Bottom layout drag open: When set to <label>false</label>, the bottom layout cannot be opened by dragging, However, closing is not subject to this restriction, Default value: <label>true</label></p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -514,7 +515,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A29">showLayout</h2>
+					<h2 data-tab="A29" id="showLayout">showLayout</h2>
 					<p>Whether the layout of non current operation is hidden, Default value<label>false</label></p>
 					<p>The figure shows <label>mode</label> in fixed mode, 50% demonstration of overall layout transparency</p>
 					<ul>
@@ -522,21 +523,21 @@
 						<li><label>false</label>: hide<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t012bb4d200a124a054.gif"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A30">autoClose</h2>
+					<h2 data-tab="A30" id="autoClose">autoClose</h2>
 					<p>Close other <label>SwipeDrawer</label> after opening: Set to <label>true</label>, and other <label>SwipeDrawer</label> whose <label>autoClose</label> is <label>true</label> will be closed after opening</p>
 					<ul>
 						<li><label>true</label>: Auto off<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t014e66921fe0b373ff.gif"></div></li>
 						<li><label>false</label>: Default value, Multiple can be opened at the same time<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01b68f98bbc9b6896a.gif"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A31">maskClose</h2>
+					<h2 data-tab="A31" id="maskClose">maskClose</h2>
 					<p>Click the mask and close <label>SwipeDrawer</label>: Set to <label>true</label>, and click the mask background after opening <label>mask</label> to close the current <label>SwipeDrawer</label></p>
 					<ul>
 						<li><label>true</label>: Click close<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t019ea3e2b8816ac646.gif"></div></li>
 						<li><label>false</label>: Default value, No operation</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A32">maskColor</h2>
+					<h2 data-tab="A32" id="maskColor">maskColor</h2>
 					<p>Mask color: The default color is <label>#80000000</label></p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
     <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span>
@@ -546,7 +547,7 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A33">dragClose</h2>
+					<h2 data-tab="A33" id="dragClose">dragClose</h2>
 					<p>Allow drag close: And<label>leftDragOpen</label>、<label>topDragOpen</label>、<label>rightDragOpen</label>、<label>bottomDragOpen</label>Drag open is the same</p>
 					<p>If it is set to <label>false</label> it cannot be closed by dragging, However, opening is not subject to this restriction, Default value: <label>true</label></p>
 					<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>
@@ -556,21 +557,29 @@
     ...
 <span class="hljs-tag">&lt;/<span class="hljs-name">cn.leaqi.drawer.SwipeDrawer</span>&gt;</span></code></pre>
 					<br/><br/>
-					<h2 data-tab="A34">scrollOuterDrag</h2>
-					<p>Is dragging allowed outside the sliding layout: Whether the layout other than the sub sliding layout in all directions of the drawer layout can be closed by dragging, Default value: <label>false</label></p>
+					<h2 data-tab="A331" id="dragCloseType">dragCloseType<em>Warn：Minimum version required >= 1.4</em></h2>
+					<p>Drag Close Type：Restrict the main layout, drawer layout, or global dragging closing，Default value：<label>all</label></p>
+					<ul>
+						<li><label>all</label>：Whole Layout<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01de70b63889699dd0.gif"></div></li>
+						<li><label>main</label>：Main Layout<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t01ef25d8fc0577ef9d.gif"></div></li>
+						<li><label>drawer</label>：Drawer Layout<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0105f0747b8ce2c5c9.gif"></div></li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A34" id="scrollOuterDrag">scrollOuterDrag</h2>
+					<p>hether dragging is allowed outside the sliding layout: Whether the layout other than the sub sliding layout in all directions of the drawer layout can be closed by dragging, Default value: <label>false</label></p>
 					<ul>
 						<li><label>true</label>: Under any circumstances<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t0184184b4f523ce624.gif"></div></li>
 						<li><label>false</label>: Only when the sub sliding layout reaches the top or cannot slide at all can it be allowed<map data-preview-btn>View Preview</map><br><div data-preview-src="https://p.ssl.qhimg.com/t019dbea0eb36fa3b62.gif"></div></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A341">autoLayout<em>Warn：Minimum version required >= 1.2</em></h2>
+					<h2 data-tab="A341" id="autoLayout">autoLayout<em>Warn：Minimum version required >= 1.2</em></h2>
 					<p>Layout Auto Update：Automatically update when the layout size changes，Default value：<label>true</label></p>
 					<ul>
 						<li><label>true</label>：Auto Update</li>
 						<li><label>false</label>：No Auto Update</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A35">shrinkRange</h2>
+					<h2 data-tab="A35" id="shrinkRange">shrinkRange</h2>
 					<p>Drag distance: <map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01fde8e23b90ca4fc2.gif"></span></p>
 					<ul>
 						<li>Drag direction height / width divided by <label>shrinkRange</label>, It will not be opened or closed until the drag reaches the distance, otherwise it will return to the original state</li>
@@ -578,42 +587,42 @@
 						<li><label>0</label>: Can drag, But it will not turn on or off</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A36">dragDamping</h2>
+					<h2 data-tab="A36" id="dragDamping">dragDamping</h2>
 					<p>Drag dmping: 0-9<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t018d3aa4860ec083ac.gif"></span></p>
 					<ul>
 						<li>The smaller the value, the greater the dmping</li>
 						<li>Default value: <label>10</label>, No dmping</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A37">dragRange</h2>
+					<h2 data-tab="A37" id="dragRange">dragRange</h2>
 					<p>Edge drag: <map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01d4db1d88998f2276.gif"></span></p>
 					<ul>
 						<li>Value type: <label>dip</label>, After setting, the dragging and pressing position must be the edge position of <label>dragRange</label> dip before dragging</li>
 						<li>Default value: <label>0</label>, All bureau drag</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A371">dragSlop<em>Warn：Minimum version required >= 1.1</em></h2>
+					<h2 data-tab="A371" id="dragSlop">dragSlop<em>Warn：Minimum version required >= 1.1</em></h2>
 					<p>Drag intercept distance：</p>
 					<ul>
 						<li>Value type：<label>dip</label>，The event is intercepted only when the drag distance is greater than<label>dragSlop</label>dip</li>
 						<li>Default value：<label>5</label>px</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A38">maxDragSize</h2>
+					<h2 data-tab="A38" id="maxDragSize">maxDragSize</h2>
 					<p>Maximum drag height / width: <map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t014da22f9cf70514da.gif"></span></p>
 					<ul>
 						<li>Value type: <label>dip</label>, After setting, you can drag it to the distance set by <label>maxDragSize</label></li>
 						<li>Default value: <label>0</label>, Layout height / width</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A39">duration</h2>
+					<h2 data-tab="A39" id="duration">duration</h2>
 					<p>Animation speed: <map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t014e602378c6d27e87.gif"></span></p>
 					<ul>
 						<li>Value type: <label>int</label></li>
 						<li>Default value: <label>200</label></li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A40">interpolator</h2>
+					<h2 data-tab="A40" id="interpolator">interpolator</h2>
 					<p>Animation interpolator: </p>
 					<ul>
 						<li>Slow down: <label>@android:anim/decelerate_interpolator</label><map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01097f6109d9290f98.gif"></span></li>
@@ -623,7 +632,7 @@
 					</ul>
 					<br/><br/>
 				<h1 data-tab="B0">Call Interface</h1>
-				<h2 data-tab="B1">OnDrawerState</h2>
+				<h2 data-tab="B1" id="OnDrawerState">OnDrawerState</h2>
 				<p>Listening start, move, start, close and cancel callback</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 swipeDrawer.setOnDrawerState(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OnDrawerState</span>() {
@@ -655,7 +664,7 @@ swipeDrawer.setOnDrawerState(<span class="hljs-keyword">new</span> <span class="
     }
 });</code></pre>
 				<br/><br/>
-				<h2 data-tab="B2">OnDrawerSwitch</h2>
+				<h2 data-tab="B2" id="OnDrawerSwitch">OnDrawerSwitch</h2>
 				<p>Listening on / off callback</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 swipeDrawer.setOnDrawerSwitch(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OnDrawerSwitch</span>() {
@@ -671,7 +680,7 @@ swipeDrawer.setOnDrawerSwitch(<span class="hljs-keyword">new</span> <span class=
     }
 });</code></pre>
 				<br/><br/>
-				<h2 data-tab="B3">OnDrawerChange</h2>
+				<h2 data-tab="B3" id="OnDrawerChange">OnDrawerChange</h2>
 				<p>Monitor changes and return various statuses by parameters</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 swipeDrawer.setOnDrawerChange(<span class="hljs-keyword">new</span> <span class="hljs-title class_">OnDrawerChange</span>() {
@@ -716,7 +725,7 @@ swipeDrawer.setOnDrawerChange(<span class="hljs-keyword">new</span> <span class=
 });</code></pre>
 				<br/><br/>
 				<h1 data-tab="C0">Call method</h1>
-				<h2 data-tab="C1">openDrawer</h2>
+				<h2 data-tab="C1" id="openDrawer">openDrawer</h2>
 				<p>Call open method</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 
@@ -729,7 +738,7 @@ swipeDrawer.openDrawer(SwipeDrawer.DIRECTION_TOP, <span class="hljs-literal">fal
 <span class="hljs-comment">// Open right direction, Use animation, Do not use callback interface</span>
 swipeDrawer.openDrawer(SwipeDrawer.DIRECTION_RIGHT, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);</code></pre>
 				<br/><br/>
-				<h2 data-tab="C2">closeDrawer</h2>
+				<h2 data-tab="C2" id="closeDrawer">closeDrawer</h2>
 				<p>调用关闭方法</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 
@@ -751,7 +760,7 @@ swipeDrawer.closeDrawer(SwipeDrawer.DIRECTION_TOP, <span class="hljs-literal">fa
 <span class="hljs-comment">// Close right direction, Use animation, Do not use callback interface</span>
 swipeDrawer.closeDrawer(SwipeDrawer.DIRECTION_RIGHT, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);</code></pre>
 				<br/><br/>
-				<h2 data-tab="C3">toggleDrawer</h2>
+				<h2 data-tab="C3" id="toggleDrawer">toggleDrawer</h2>
 				<p>Call the open or close method</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 
@@ -764,7 +773,7 @@ swipeDrawer.toggleDrawer(SwipeDrawer.DIRECTION_TOP, <span class="hljs-literal">f
 <span class="hljs-comment">// Open or close right direction, Use animation, Do not use callback interface</span>
 swipeDrawer.toggleDrawer(SwipeDrawer.DIRECTION_RIGHT, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);</code></pre>
 				<br/><br/>
-				<h2 data-tab="C4">drawerLayout<em>Warn：Minimum version required >= 1.2</em></h2>
+				<h2 data-tab="C4" id="drawerLayout">drawerLayout<em>Warn：Minimum version required >= 1.2</em></h2>
 				<p>Update Layout</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 
@@ -772,7 +781,7 @@ swipeDrawer.toggleDrawer(SwipeDrawer.DIRECTION_RIGHT, <span class="hljs-literal"
 swipeDrawer.drawerLayout();</code></pre>
 				<br/><br/>
 				<h1 data-tab="D0">Static method</h1>
-				<h2 data-tab="D1">setAllIntercept</h2>
+				<h2 data-tab="D1" id="setAllIntercept">setAllIntercept</h2>
 				<p>Set to mask all <label>SwipeDrawer</label> touch events</p>
 				<pre><code class="hljs"><span class="hljs-comment">// Mask all SwipeDrawer touch events</span>
 SwipeDrawer.setAllIntercept(<span class="hljs-literal">true</span>);
@@ -780,7 +789,7 @@ SwipeDrawer.setAllIntercept(<span class="hljs-literal">true</span>);
 <span class="hljs-comment">// Unshielded</span>
 SwipeDrawer.setAllIntercept(<span class="hljs-literal">false</span>);</code></pre>
 				<br/><br/>
-				<h2 data-tab="D2">getAllIntercept</h2>
+				<h2 data-tab="D2" id="getAllIntercept">getAllIntercept</h2>
 				<p>Get whether the <label>SwipeDrawer</label> touch event is shielded</p>
 				<pre><code class="hljs"><span class="hljs-comment">// Gets whether the touch event is masked</span>
 <span class="hljs-keyword">if</span> (SwipeDrawer.getAllIntercept()) {
@@ -789,7 +798,7 @@ SwipeDrawer.setAllIntercept(<span class="hljs-literal">false</span>);</code></pr
     <span class="hljs-comment">// No shielding</span>
 }</code></pre>
 				<br/><br/>
-				<h2 data-tab="D3">getParentDrawer</h2>
+				<h2 data-tab="D3" id="getParentDrawer">getParentDrawer</h2>
 				<p>Get the parent of view <label>SwipeDrawer</label></p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">View</span> <span class="hljs-variable">view</span> <span class="hljs-operator">=</span> findViewById(R.id.view);
 <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">getSwipeDrawer</span> <span class="hljs-operator">=</span> SwipeDrawer.getParentDrawer(view);
@@ -800,7 +809,7 @@ SwipeDrawer.setAllIntercept(<span class="hljs-literal">false</span>);</code></pr
 }</code></pre>
 				<br/><br/>
 				<h1 data-tab="E0">Other</h1>
-				<h2 data-tab="E1">DrawerHolder</h2>
+				<h2 data-tab="E1" id="DrawerHolder">DrawerHolder</h2>
 				<p>The <label>SwipeDrawer</label>class is used to save layouts with recycling mechanisms such as <label>ListView</label>, <label>RecyclerView</label> when <label>item</label> is not automatically closed</p>
 				<pre><strong>Use of DrawerHolder class: </strong><code class="hljs"><span class="hljs-type">DrawerHolder</span> <span class="hljs-variable">drawerHolder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DrawerHolder</span>();
 
