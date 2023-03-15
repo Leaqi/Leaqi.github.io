@@ -26,7 +26,7 @@
 					<li><a href="/SwipeDrawer_en/logs.html" title="Update Logs">Logs</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github Issues">Issues</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github Project Code">Project Code</a></li>
-					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.4/demo.apk" title="Download Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.5/demo.apk" title="Download Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
 					<li class="r"><a href="/SwipeDrawer/" title="切换中文版"><img src="/libs/images/Language-Chinese.svg"></a></li>
 				</ul>
 			</div>
@@ -80,8 +80,16 @@
 					<li data-btn="A34"><span>scrollOuterDrag</span></li>
 					<li data-btn="A341"><span>autoLayout</span></li>
 					<li data-btn="A35"><span>shrinkRange</span></li>
-					<li data-btn="A36"><span>dragDamping</span></li>
+					<li data-btn="A36"><span>dragDamping<i></i></span></li>
 					<li data-btn="A37"><span>dragRange</span></li>
+					<li data-btn="A372"><span>leftDragRange<i></i></span></li>
+					<li data-btn="A373"><span>topDragRange<i></i></span></li>
+					<li data-btn="A374"><span>rightDragRange<i></i></span></li>
+					<li data-btn="A375"><span>bottomDragRange<i></i></span></li>
+					<li data-btn="A376"><span>leftOffset<i></i></span></li>
+					<li data-btn="A377"><span>topOffset<i></i></span></li>
+					<li data-btn="A378"><span>rightOffset<i></i></span></li>
+					<li data-btn="A379"><span>bottomOffset<i></i></span></li>
 					<li data-btn="A371"><span>dragSlop</span></li>
 					<li data-btn="A38"><span>maxDragSize</span></li>
 					<li data-btn="A39"><span>duration</span></li>
@@ -94,7 +102,8 @@
 					<li data-btn="C1"><span>openDrawer</span></li>
 					<li data-btn="C2"><span>closeDrawer</span></li>
 					<li data-btn="C3"><span>toggleDrawer</span></li>
-					<li data-btn="C4"><span>drawerLayout</span></li>
+					<li data-btn="C4"><span>setIntercept</span></li>
+					<li data-btn="C5"><span>drawerLayout</span></li>
 					<li class="title" data-btn="D0"><span>Static method</span></li>
 					<li data-btn="D1"><span>setAllIntercept</span></li>
 					<li data-btn="D2"><span>getAllIntercept</span></li>
@@ -587,8 +596,8 @@
 						<li><label>0</label>: Can drag, But it will not turn on or off</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A36" id="dragDamping">dragDamping</h2>
-					<p>Drag dmping: 0-9<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t018d3aa4860ec083ac.gif"></span></p>
+					<h2 data-tab="A36" id="dragDamping">dragDamping<em>Warn：When version >= 1.5, the value range is 0-99, the larger the value, the faster the speed</em></h2>
+					<p>Drag dmping: 0-9<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t0100c65c168ea5c2fe.gif"></span></p>
 					<ul>
 						<li>The smaller the value, the greater the dmping</li>
 						<li>Default value: <label>10</label>, No dmping</li>
@@ -599,6 +608,62 @@
 					<ul>
 						<li>Value type: <label>dip</label>, After setting, the dragging and pressing position must be the edge position of <label>dragRange</label> dip before dragging</li>
 						<li>Default value: <label>0</label>, All bureau drag</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A372" id="leftDragRange">leftDragRange<em>Warn：Minimum version required >= 1.5</em></h2>
+					<p>Left edge drag: <map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01a17d75748ec7f6a2.gif"></span></p>
+					<ul>
+						<li>Value type: <label>dip</label>, After setting, the dragging and pressing position must be the edge position of <label>leftDragRange</label> dip before dragging</li>
+						<li>Default value: <label>0</label>, All bureau drag</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A373" id="topDragRange">topDragRange<em>Warn：Minimum version required >= 1.5</em></h2>
+					<p>Top edge drag: <map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01a17d75748ec7f6a2.gif"></span></p>
+					<ul>
+						<li>Value type: <label>dip</label>, After setting, the dragging and pressing position must be the edge position of <label>topDragRange</label> dip before dragging</li>
+						<li>Default value: <label>0</label>, All bureau drag</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A374" id="rightDragRange">rightDragRange<em>Warn：Minimum version required >= 1.5</em></h2>
+					<p>Right edge drag: <map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01a17d75748ec7f6a2.gif"></span></p>
+					<ul>
+						<li>Value type: <label>dip</label>, After setting, the dragging and pressing position must be the edge position of <label>rightDragRange</label> dip before dragging</li>
+						<li>Default value: <label>0</label>, All bureau drag</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A375" id="bottomDragRange">bottomDragRange<em>Warn：Minimum version required >= 1.5</em></h2>
+					<p>Bottom edge drag: <map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01a17d75748ec7f6a2.gif"></span></p>
+					<ul>
+						<li>Value type: <label>dip</label>, After setting, the dragging and pressing position must be the edge position of <label>bottomDragRange</label> dip before dragging</li>
+						<li>Default value: <label>0</label>, All bureau drag</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A376" id="leftOffset">leftOffset<em>Warn：Minimum version required >= 1.5</em></h2>
+					<p>Left layout offset：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01420b725496b2dc29.gif"></span></p>
+					<ul>
+						<li>Value type:<label>dip</label>，Left layout offset outward<label>leftOffset</label>dip，Valid only in<label>cover</label>mode</li>
+						<li>Default value:<label>0</label>px</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A377" id="topOffset">topOffset<em>Warn：Minimum version required >= 1.5</em></h2>
+					<p>Top layout offset：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t018c8c126dfaf3e9d0.gif"></span></p>
+					<ul>
+						<li>Value type:<label>dip</label>，Top layout offset outward<label>topOffset</label>dip，Valid only in<label>cover</label>mode</li>
+						<li>Default value:<label>0</label>px</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A378" id="rightOffset">rightOffset<em>Warn：Minimum version required >= 1.5</em></h2>
+					<p>Right layout offset：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01b05c3b5c3b5c8b1d.gif"></span></p>
+					<ul>
+						<li>Value type:<label>dip</label>，Right layout offset outward<label>rightOffset</label>dip，Valid only in<label>cover</label>mode</li>
+						<li>Default value:<label>0</label>px</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A379" id="bottomOffset">bottomOffset<em>Warn：Minimum version required >= 1.5</em></h2>
+					<p>Bottom layout offset：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01768c7d5e352d1acc.gif"></span></p>
+					<ul>
+						<li>Value type:<label>dip</label>，Bottom layout offset outward<label>bottomOffset</label>dip，Valid only in<label>cover</label>mode</li>
+						<li>Default value:<label>0</label>px</li>
 					</ul>
 					<br/><br/>
 					<h2 data-tab="A371" id="dragSlop">dragSlop<em>Warn：Minimum version required >= 1.1</em></h2>
@@ -773,7 +838,21 @@ swipeDrawer.toggleDrawer(SwipeDrawer.DIRECTION_TOP, <span class="hljs-literal">f
 <span class="hljs-comment">// Open or close right direction, Use animation, Do not use callback interface</span>
 swipeDrawer.toggleDrawer(SwipeDrawer.DIRECTION_RIGHT, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);</code></pre>
 				<br/><br/>
-				<h2 data-tab="C4" id="drawerLayout">drawerLayout<em>Warn：Minimum version required >= 1.2</em></h2>
+				<h2 data-tab="C4" id="setIntercept">setIntercept</h2>
+				<p>Shield touch events</p>
+				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
+
+<span class="hljs-comment">// Shield touch events in all directions</span>
+swipeDrawer.setIntercept(<span class="hljs-literal">false</span>);
+
+<span class="hljs-comment">// Shield Top direction touch event</span>
+swipeDrawer.setIntercept(SwipeDrawer.DIRECTION_TOP, <span class="hljs-literal">false</span>);
+
+<span class="hljs-comment">// Shield Left direction touch event</span>
+<span class="hljs-keyword">final</span> <span class="hljs-type">View</span> <span class="hljs-variable">leftLayout</span> <span class="hljs-operator">=</span> findViewById(R.id.leftLayout);
+swipeDrawer.setIntercept(leftLayout, <span class="hljs-literal">false</span>);</code></pre>
+				<br/><br/>
+				<h2 data-tab="C5" id="drawerLayout">drawerLayout<em>Warn：Minimum version required >= 1.2</em></h2>
 				<p>Update Layout</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 

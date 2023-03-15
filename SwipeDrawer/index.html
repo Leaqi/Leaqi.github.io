@@ -26,7 +26,7 @@
 					<li><a href="/SwipeDrawer/logs.html" title="更新日志">更新日志</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github问题交流">问题交流</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github项目源码">项目源码</a></li>
-					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.4/demo.apk" title="下载Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.5/demo.apk" title="下载Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
 					<li class="r"><a href="/SwipeDrawer_en/" title="Switch to English"><img src="/libs/images/Language-English.svg"></a></li>
 				</ul>
 			</div>
@@ -75,7 +75,7 @@
 				<p>添加<label>SwipeDrawer</label>依赖：</p>
 				<pre><code class="hljs">dependencies {
     ...
-    implementation <span class="hljs-string">&#x27;cn.Leaqi:SwipeDrawer:1.4&#x27;</span>
+    implementation <span class="hljs-string">&#x27;cn.Leaqi:SwipeDrawer:1.5&#x27;</span>
 }</code></pre>
 				<br/>
 				<p>在布局文件中加入<label>SwipeDrawer</label>：</p>
@@ -418,13 +418,61 @@
 						</tr>
 						<tr>
 							<td>dragDamping</td>
-							<td>拖拽阻力：0-9<br/><label>10</label>：无阻力</td>
+							<td>拖拽阻力：0-9<br/><label>10</label>：无阻力<ins>注：版本 >= 1.5 时值范围在0-99，值越大速度越快</ins></td>
 							<td>int</td>
 							<td>10</td>
 						</tr>
 						<tr>
 							<td>dragRange</td>
 							<td>边缘拖拽<br/>布局方向的最边缘<label>dragRange</label>dip才允许拖拽<br/><label>0</label>：全布局拖拽</td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>leftDragRange</td>
+							<td>Left边缘拖拽<br/>Left布局方向的最边缘<label>leftDragRange</label>dip才允许拖拽<br/><label>0</label>：全布局拖拽<ins>注：最低版本需 >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>topDragRange</td>
+							<td>Top边缘拖拽<br/>Top布局方向的最边缘<label>topDragRange</label>dip才允许拖拽<br/><label>0</label>：全布局拖拽<ins>注：最低版本需 >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>rightDragRange</td>
+							<td>Right边缘拖拽<br/>Right布局方向的最边缘<label>rightDragRange</label>dip才允许拖拽<br/><label>0</label>：全布局拖拽<ins>注：最低版本需 >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>bottomDragRange</td>
+							<td>Bottom边缘拖拽<br/>Bottom布局方向的最边缘<label>bottomDragRange</label>dip才允许拖拽<br/><label>0</label>：全布局拖拽<ins>注：最低版本需 >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>leftOffset</td>
+							<td>Left布局偏移<br/>Left布局向外偏移<label>leftOffset</label>dip<ins>注：最低版本需 >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>topOffset</td>
+							<td>Top布局偏移<br/>Top布局向外偏移<label>topOffset</label>dip<ins>注：最低版本需 >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>rightOffset</td>
+							<td>Right布局偏移<br/>Right布局向外偏移<label>rightOffset</label>dip<ins>注：最低版本需 >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>bottomOffset</td>
+							<td>Bottom布局偏移<br/>Bottom布局向外偏移<label>bottomOffset</label>dip<ins>注：最低版本需 >= 1.5</ins></td>
 							<td>dip</td>
 							<td>0</td>
 						</tr>
@@ -701,6 +749,62 @@
 							<td>getDragRange()</td>
 							<td>
 								<p>获取<label>dragRange</label>属性</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getLeftDragRange()</td>
+							<td>
+								<p>获取<label>leftDragRange</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getTopDragRange()</td>
+							<td>
+								<p>获取<label>topDragRange</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getRightDragRange()</td>
+							<td>
+								<p>获取<label>rightDragRange</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getBottomDragRange()</td>
+							<td>
+								<p>获取<label>bottomDragRange</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getLeftOffset()</td>
+							<td>
+								<p>获取<label>leftOffset</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getTopOffset()</td>
+							<td>
+								<p>获取<label>topOffset</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getRightOffset()</td>
+							<td>
+								<p>获取<label>rightOffset</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getBottomOffset()</td>
+							<td>
+								<p>获取<label>bottomOffset</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
 							</td>
 							<td>int</td>
 						</tr>
@@ -1216,7 +1320,7 @@
 								<p>设置<label>dragDamping</label>属性</p>
 							</td>
 							<td>
-								<p>num：<label>int</label>0-9<br/><label>10</label>：无阻力</p>
+								<p>num：<label>int</label>0-9<br/><label>10</label>：无阻力<ins>注：版本 >= 1.5 时值范围在0-99，值越大速度越快</ins></p>
 							</td>
 						</tr>
 						<tr>
@@ -1226,6 +1330,78 @@
 							</td>
 							<td>
 								<p>num：<label>int</label>px<br/><label>0</label>：全布局拖拽</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftDragRange(int num)</td>
+							<td>
+								<p>设置<label>leftDragRange</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px<br/><label>0</label>：全布局拖拽</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopDragRange(int num)</td>
+							<td>
+								<p>设置<label>topDragRange</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px<br/><label>0</label>：全布局拖拽</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightDragRange(int num)</td>
+							<td>
+								<p>设置<label>rightDragRange</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px<br/><label>0</label>：全布局拖拽</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomDragRange(int num)</td>
+							<td>
+								<p>设置<label>bottomDragRange</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px<br/><label>0</label>：全布局拖拽</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftOffset(int num)</td>
+							<td>
+								<p>设置<label>leftOffset</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopOffset(int num)</td>
+							<td>
+								<p>设置<label>topOffset</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightOffset(int num)</td>
+							<td>
+								<p>设置<label>rightOffset</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomOffset(int num)</td>
+							<td>
+								<p>设置<label>bottomOffset</label>属性<ins>注：最低版本需 >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px</p>
 							</td>
 						</tr>
 						<tr>
@@ -1422,7 +1598,7 @@
 								<p>打开指定方向</p>
 							</td>
 							<td>
-								<p>int：</p>
+								<p>type：</p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
@@ -1435,7 +1611,7 @@
 								<p>打开指定方向、动画设置</p>
 							</td>
 							<td>
-								<p>int：</p>
+								<p>type：</p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
@@ -1449,7 +1625,7 @@
 								<p>打开指定方向、动画设置、回调设置</p>
 							</td>
 							<td>
-								<p>int：</p>
+								<p>type：</p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
@@ -1490,7 +1666,7 @@
 								<p>关闭指定方向</p>
 							</td>
 							<td>
-								<p>int：</p>
+								<p>type：</p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
@@ -1503,7 +1679,7 @@
 								<p>关闭指定方向、动画设置</p>
 							</td>
 							<td>
-								<p>int：</p>
+								<p>type：</p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
@@ -1517,7 +1693,7 @@
 								<p>关闭指定方向、动画设置、回调设置</p>
 							</td>
 							<td>
-								<p>int：</p>
+								<p>type：</p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
@@ -1532,7 +1708,7 @@
 								<p>打开/关闭指定方向</p>
 							</td>
 							<td>
-								<p>int：</p>
+								<p>type：</p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
@@ -1545,7 +1721,7 @@
 								<p>打开/关闭指定方向、动画设置</p>
 							</td>
 							<td>
-								<p>int：</p>
+								<p>type：</p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
@@ -1559,13 +1735,46 @@
 								<p>打开/关闭指定方向、动画设置、回调设置</p>
 							</td>
 							<td>
-								<p>int：</p>
+								<p>type：</p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
 								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom方向</p>
 								<p>anim：<label>true/false</label>是否开启动画</p>
 								<p>call：<label>true/false</label>是否回调接口</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setIntercept(boolean intercept)</td>
+							<td>
+								<p>屏蔽所有方向触摸事件</ins></p>
+							</td>
+							<td>
+								<p>intercept：<label>true/false</label>是否允许触摸</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setIntercept(int type, boolean intercept)</td>
+							<td>
+								<p>屏蔽指定方向触摸事件</ins></p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left方向</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top方向</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right方向</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom方向</p>
+								<p>intercept：<label>true/false</label>是否允许触摸</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setIntercept(View view, boolean intercept)</td>
+							<td>
+								<p>屏蔽指定方向触摸事件</ins></p>
+							</td>
+							<td>
+								<p>view：指定方向<label>View</label></p>
+								<p>intercept：<label>true/false</label>是否允许触摸</p>
 							</td>
 						</tr>
 						<tr>

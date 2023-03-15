@@ -26,7 +26,7 @@
 					<li><a href="/SwipeDrawer/logs.html" title="更新日志">更新日志</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github问题交流">问题交流</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github项目源码">项目源码</a></li>
-					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.4/demo.apk" title="下载Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.5/demo.apk" title="下载Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
 					<li class="r"><a href="/SwipeDrawer_en/" title="Switch to English"><img src="/libs/images/Language-English.svg"></a></li>
 				</ul>
 			</div>
@@ -80,8 +80,16 @@
 					<li data-btn="A34"><span>scrollOuterDrag</span></li>
 					<li data-btn="A341"><span>autoLayout</span></li>
 					<li data-btn="A35"><span>shrinkRange</span></li>
-					<li data-btn="A36"><span>dragDamping</span></li>
+					<li data-btn="A36"><span>dragDamping<i></i></span></li>
 					<li data-btn="A37"><span>dragRange</span></li>
+					<li data-btn="A372"><span>leftDragRange<i></i></span></li>
+					<li data-btn="A373"><span>topDragRange<i></i></span></li>
+					<li data-btn="A374"><span>rightDragRange<i></i></span></li>
+					<li data-btn="A375"><span>bottomDragRange<i></i></span></li>
+					<li data-btn="A376"><span>leftOffset<i></i></span></li>
+					<li data-btn="A377"><span>topOffset<i></i></span></li>
+					<li data-btn="A378"><span>rightOffset<i></i></span></li>
+					<li data-btn="A379"><span>bottomOffset<i></i></span></li>
 					<li data-btn="A371"><span>dragSlop</span></li>
 					<li data-btn="A38"><span>maxDragSize</span></li>
 					<li data-btn="A39"><span>duration</span></li>
@@ -94,7 +102,8 @@
 					<li data-btn="C1"><span>openDrawer</span></li>
 					<li data-btn="C2"><span>closeDrawer</span></li>
 					<li data-btn="C3"><span>toggleDrawer</span></li>
-					<li data-btn="C4"><span>drawerLayout</span></li>
+					<li data-btn="C4"><span>setIntercept</span></li>
+					<li data-btn="C5"><span>drawerLayout</span></li>
 					<li class="title" data-btn="D0"><span>全局方法</span></li>
 					<li data-btn="D1"><span>setAllIntercept</span></li>
 					<li data-btn="D2"><span>getAllIntercept</span></li>
@@ -587,8 +596,8 @@
 						<li><label>0</label>：可以拖拽，但不会开启或关闭</li>
 					</ul>
 					<br/><br/>
-					<h2 data-tab="A36" id="dragDamping">dragDamping</h2>
-					<p>拖拽阻力：0-9<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t018d3aa4860ec083ac.gif"></span></p>
+					<h2 data-tab="A36" id="dragDamping">dragDamping<em>注：版本 >= 1.5 时值范围在0-99，值越大速度越快</em></h2>
+					<p>拖拽阻力：0-9<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t0100c65c168ea5c2fe.gif"></span></p>
 					<ul>
 						<li>值越小阻力越大</li>
 						<li>默认值为：<label>10</label>，无阻力</li>
@@ -599,6 +608,62 @@
 					<ul>
 						<li>值类型为：<label>dip</label>，设定后拖拽按下位置必须是<label>dragRange</label>dip的边缘位置才可以拖拽</li>
 						<li>默认值为：<label>0</label>，全部局拖拽</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A372" id="leftDragRange">leftDragRange<em>注：最低版本需 >= 1.5</em></h2>
+					<p>Left边缘拖拽：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01a17d75748ec7f6a2.gif"></span></p>
+					<ul>
+						<li>值类型为：<label>dip</label>，设定后拖拽按下位置必须是<label>leftDragRange</label>dip的边缘位置才可以拖拽</li>
+						<li>默认值为：<label>0</label>，全部局拖拽</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A373" id="topDragRange">topDragRange<em>注：最低版本需 >= 1.5</em></h2>
+					<p>Top边缘拖拽：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01a17d75748ec7f6a2.gif"></span></p>
+					<ul>
+						<li>值类型为：<label>dip</label>，设定后拖拽按下位置必须是<label>topDragRange</label>dip的边缘位置才可以拖拽</li>
+						<li>默认值为：<label>0</label>，全部局拖拽</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A374" id="rightDragRange">rightDragRange<em>注：最低版本需 >= 1.5</em></h2>
+					<p>Right边缘拖拽：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01a17d75748ec7f6a2.gif"></span></p>
+					<ul>
+						<li>值类型为：<label>dip</label>，设定后拖拽按下位置必须是<label>rightDragRange</label>dip的边缘位置才可以拖拽</li>
+						<li>默认值为：<label>0</label>，全部局拖拽</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A375" id="bottomDragRange">bottomDragRange<em>注：最低版本需 >= 1.5</em></h2>
+					<p>Bottom边缘拖拽：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01a17d75748ec7f6a2.gif"></span></p>
+					<ul>
+						<li>值类型为：<label>dip</label>，设定后拖拽按下位置必须是<label>bottomDragRange</label>dip的边缘位置才可以拖拽</li>
+						<li>默认值为：<label>0</label>，全部局拖拽</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A376" id="leftOffset">leftOffset<em>注：最低版本需 >= 1.5</em></h2>
+					<p>Left布局偏移：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01420b725496b2dc29.gif"></span></p>
+					<ul>
+						<li>值类型为：<label>dip</label>，Left布局向外偏移<label>leftOffset</label>dip，仅<label>cover</label>模式下有效</li>
+						<li>默认值为：<label>0</label>px</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A377" id="topOffset">topOffset<em>注：最低版本需 >= 1.5</em></h2>
+					<p>Top布局偏移：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t018c8c126dfaf3e9d0.gif"></span></p>
+					<ul>
+						<li>值类型为：<label>dip</label>，Top布局向外偏移<label>topOffset</label>dip，仅<label>cover</label>模式下有效</li>
+						<li>默认值为：<label>0</label>px</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A378" id="rightOffset">rightOffset<em>注：最低版本需 >= 1.5</em></h2>
+					<p>Right布局偏移：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01b05c3b5c3b5c8b1d.gif"></span></p>
+					<ul>
+						<li>值类型为：<label>dip</label>，Right布局向外偏移<label>rightOffset</label>dip，仅<label>cover</label>模式下有效</li>
+						<li>默认值为：<label>0</label>px</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A379" id="bottomOffset">bottomOffset<em>注：最低版本需 >= 1.5</em></h2>
+					<p>Bottom布局偏移：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01768c7d5e352d1acc.gif"></span></p>
+					<ul>
+						<li>值类型为：<label>dip</label>，Bottom布局向外偏移<label>bottomOffset</label>dip，仅<label>cover</label>模式下有效</li>
+						<li>默认值为：<label>0</label>px</li>
 					</ul>
 					<br/><br/>
 					<h2 data-tab="A371" id="dragSlop">dragSlop<em>注：最低版本需 >= 1.1</em></h2>
@@ -773,7 +838,21 @@ swipeDrawer.toggleDrawer(SwipeDrawer.DIRECTION_TOP, <span class="hljs-literal">f
 <span class="hljs-comment">// 打开或者关闭 Right 方向，使用动画，不使用回调接口</span>
 swipeDrawer.toggleDrawer(SwipeDrawer.DIRECTION_RIGHT, <span class="hljs-literal">true</span>, <span class="hljs-literal">false</span>);</code></pre>
 				<br/><br/>
-				<h2 data-tab="C4" id="drawerLayout">drawerLayout<em>注：最低版本需 >= 1.2</em></h2>
+				<h2 data-tab="C4" id="setIntercept">setIntercept</h2>
+				<p>屏蔽触摸事件</p>
+				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
+
+<span class="hljs-comment">// 屏蔽所有方向触摸事件</span>
+swipeDrawer.setIntercept(<span class="hljs-literal">false</span>);
+
+<span class="hljs-comment">// 屏蔽 Top 方向触摸事件</span>
+swipeDrawer.setIntercept(SwipeDrawer.DIRECTION_TOP, <span class="hljs-literal">false</span>);
+
+<span class="hljs-comment">// 屏蔽 Left 方向触摸事件</span>
+<span class="hljs-keyword">final</span> <span class="hljs-type">View</span> <span class="hljs-variable">leftLayout</span> <span class="hljs-operator">=</span> findViewById(R.id.leftLayout);
+swipeDrawer.setIntercept(leftLayout, <span class="hljs-literal">false</span>);</code></pre>
+				<br/><br/>
+				<h2 data-tab="C5" id="drawerLayout">drawerLayout<em>注：最低版本需 >= 1.2</em></h2>
 				<p>更新布局</p>
 				<pre><code class="hljs"><span class="hljs-keyword">final</span> <span class="hljs-type">SwipeDrawer</span> <span class="hljs-variable">swipeDrawer</span> <span class="hljs-operator">=</span> findViewById(R.id.swipeDrawer);
 

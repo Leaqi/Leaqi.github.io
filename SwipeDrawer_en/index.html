@@ -26,7 +26,7 @@
 					<li><a href="/SwipeDrawer_en/logs.html" title="Update Logs">Logs</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github Issues">Issues</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github Project Code">Project Code</a></li>
-					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.4/demo.apk" title="Download Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.5/demo.apk" title="Download Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
 					<li class="r"><a href="/SwipeDrawer/" title="切换中文版"><img src="/libs/images/Language-Chinese.svg"></a></li>
 				</ul>
 			</div>
@@ -75,7 +75,7 @@
 				<p>Add<label>SwipeDrawer</label>dependencies: </p>
 				<pre><code class="hljs">dependencies {
     ...
-    implementation <span class="hljs-string">&#x27;cn.Leaqi:SwipeDrawer:1.4&#x27;</span>
+    implementation <span class="hljs-string">&#x27;cn.Leaqi:SwipeDrawer:1.5&#x27;</span>
 }</code></pre>
 				<br/>
 				<p>Add<label>SwipeDrawer</label>to the layout file: </p>
@@ -418,13 +418,61 @@
 						</tr>
 						<tr>
 							<td>dragDamping</td>
-							<td>Drag damping: 0-9<br/><label>10</label>: No damping</td>
+							<td>Drag damping: 0-9<br/><label>10</label>: No damping<ins>Warn：When version >= 1.5, the value range is 0-99, the larger the value, the faster the speed</ins></td>
 							<td>int</td>
 							<td>10</td>
 						</tr>
 						<tr>
 							<td>dragRange</td>
 							<td>Edge drag<br/>Only <label>dragRange</label> dip at the most edge of the layout direction can be dragged<br/><label>0</label>: Full layout drag</td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>leftDragRange</td>
+							<td>Left edge drag<br/>Left Only <label>leftDragRange</label> dip at the most edge of the layout direction can be dragged<br/><label>0</label>: Full layout drag<ins>Warn：Minimum version required >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>topDragRange</td>
+							<td>Top edge drag<br/>Top Only <label>topDragRange</label> dip at the most edge of the layout direction can be dragged<br/><label>0</label>: Full layout drag<ins>Warn：Minimum version required >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>rightDragRange</td>
+							<td>Right edge drag<br/>Right Only <label>rightDragRange</label> dip at the most edge of the layout direction can be dragged<br/><label>0</label>: Full layout drag<ins>Warn：Minimum version required >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>bottomDragRange</td>
+							<td>Bottom edge drag<br/>Bottom Only <label>bottomDragRange</label> dip at the most edge of the layout direction can be dragged<br/><label>0</label>: Full layout drag<ins>Warn：Minimum version required >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>leftOffset</td>
+							<td>Left layout offset<br/>Left layout offset outward<label>leftOffset</label>dip<ins>Warn：Minimum version required >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>topOffset</td>
+							<td>Top layout offset<br/>Top layout offset outward<label>topOffset</label>dip<ins>Warn：Minimum version required >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>rightOffset</td>
+							<td>Right layout offset<br/>Right layout offset outward<label>rightOffset</label>dip<ins>Warn：Minimum version required >= 1.5</ins></td>
+							<td>dip</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>bottomOffset</td>
+							<td>Bottom layout offset<br/>Bottom layout offset outward<label>bottomOffset</label>dip<ins>Warn：Minimum version required >= 1.5</ins></td>
 							<td>dip</td>
 							<td>0</td>
 						</tr>
@@ -701,6 +749,62 @@
 							<td>getDragRange()</td>
 							<td>
 								<p>Get<label>dragRange</label>attribute</p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getLeftDragRange()</td>
+							<td>
+								<p>Get<label>leftDragRange</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getTopDragRange()</td>
+							<td>
+								<p>Get<label>topDragRange</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getRightDragRange()</td>
+							<td>
+								<p>Get<label>rightDragRange</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getBottomDragRange()</td>
+							<td>
+								<p>Get<label>bottomDragRange</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getLeftOffset()</td>
+							<td>
+								<p>Get<label>leftOffset</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getTopOffset()</td>
+							<td>
+								<p>Get<label>topOffset</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getRightOffset()</td>
+							<td>
+								<p>Get<label>rightOffset</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getBottomOffset()</td>
+							<td>
+								<p>Get<label>bottomOffset</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
 							</td>
 							<td>int</td>
 						</tr>
@@ -1216,7 +1320,7 @@
 								<p>Set<label>dragDamping</label>attribute</p>
 							</td>
 							<td>
-								<p>num: <label>int</label>0-9<br/><label>10</label>: No damping</p>
+								<p>num: <label>int</label>0-9<br/><label>10</label>: No damping<ins>Warn：When version >= 1.5, the value range is 0-99, the larger the value, the faster the speed</ins></p>
 							</td>
 						</tr>
 						<tr>
@@ -1226,6 +1330,78 @@
 							</td>
 							<td>
 								<p>num: <label>int</label>px<br/><label>0</label>: Full layout drag</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftDragRange(int num)</td>
+							<td>
+								<p>Set<label>leftDragRange</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num: <label>int</label>px<br/><label>0</label>: Full layout drag</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopDragRange(int num)</td>
+							<td>
+								<p>Set<label>topDragRange</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num: <label>int</label>px<br/><label>0</label>: Full layout drag</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightDragRange(int num)</td>
+							<td>
+								<p>Set<label>rightDragRange</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num: <label>int</label>px<br/><label>0</label>: Full layout drag</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomDragRange(int num)</td>
+							<td>
+								<p>Set<label>bottomDragRange</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num: <label>int</label>px<br/><label>0</label>: Full layout drag</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setLeftOffset(int num)</td>
+							<td>
+								<p>Set<label>leftOffset</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTopOffset(int num)</td>
+							<td>
+								<p>Set<label>topOffset</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setRightOffset(int num)</td>
+							<td>
+								<p>Set<label>rightOffset</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setBottomOffset(int num)</td>
+							<td>
+								<p>Set<label>bottomOffset</label>attribute<ins>Warn：Minimum version required >= 1.5</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px</p>
 							</td>
 						</tr>
 						<tr>
@@ -1422,7 +1598,7 @@
 								<p>Open the specified direction</p>
 							</td>
 							<td>
-								<p>int: </p>
+								<p>type: </p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
@@ -1435,7 +1611,7 @@
 								<p>Open the specified direction、 Animation settings</p>
 							</td>
 							<td>
-								<p>int: </p>
+								<p>type: </p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
@@ -1449,7 +1625,7 @@
 								<p>Open the specified direction、 Animation settings、 Callback settings</p>
 							</td>
 							<td>
-								<p>int: </p>
+								<p>type: </p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
@@ -1490,7 +1666,7 @@
 								<p>Turn off the specified direction</p>
 							</td>
 							<td>
-								<p>int: </p>
+								<p>type: </p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
@@ -1503,7 +1679,7 @@
 								<p>Turn off the specified direction、 Animation settings</p>
 							</td>
 							<td>
-								<p>int: </p>
+								<p>type: </p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
@@ -1517,7 +1693,7 @@
 								<p>Turn off the specified direction、 Animation settings、 callback settings</p>
 							</td>
 							<td>
-								<p>int: </p>
+								<p>type: </p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
@@ -1532,7 +1708,7 @@
 								<p>Turns the specified direction on / off</p>
 							</td>
 							<td>
-								<p>int: </p>
+								<p>type: </p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
@@ -1545,7 +1721,7 @@
 								<p>Turns the specified direction on / off、 Animation settings</p>
 							</td>
 							<td>
-								<p>int: </p>
+								<p>type: </p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
@@ -1559,13 +1735,46 @@
 								<p>Turns the specified direction on / off、 Animation settings、 callback settings</p>
 							</td>
 							<td>
-								<p>int: </p>
+								<p>type: </p>
 								<p><label>SwipeDrawer.DIRECTION_LEFT</label>: Left direction</p>
 								<p><label>SwipeDrawer.DIRECTION_TOP</label>: Top direction</p>
 								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>: Right direction</p>
 								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>: Bottom direction</p>
 								<p>anim: <label>true/false</label>Turn on animation</p>
 								<p>call: <label>true/false</label>Callback interface</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setIntercept(boolean intercept)</td>
+							<td>
+								<p>Shield touch events in all directions</ins></p>
+							</td>
+							<td>
+								<p>intercept：<label>true/false</label>Whether touch is allowed</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setIntercept(int type, boolean intercept)</td>
+							<td>
+								<p>Shield the touch event in the specified direction</ins></p>
+							</td>
+							<td>
+								<p>type：</p>
+								<p><label>SwipeDrawer.DIRECTION_LEFT</label>：Left direction</p>
+								<p><label>SwipeDrawer.DIRECTION_TOP</label>：Top direction</p>
+								<p><label>SwipeDrawer.DIRECTION_RIGHT</label>：Right direction</p>
+								<p><label>SwipeDrawer.DIRECTION_BOTTOM</label>：Bottom direction</p>
+								<p>intercept：<label>true/false</label>Whether touch is allowed</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setIntercept(View view, boolean intercept)</td>
+							<td>
+								<p>Shield the touch event in the specified direction</ins></p>
+							</td>
+							<td>
+								<p>view：Specify direction<label>View</label></p>
+								<p>intercept：<label>true/false</label>Whether touch is allowed</p>
 							</td>
 						</tr>
 						<tr>
