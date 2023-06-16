@@ -26,7 +26,7 @@
 					<li><a href="/SwipeDrawer/logs.html" title="更新日志">更新日志</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github问题交流">问题交流</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github项目源码">项目源码</a></li>
-					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.5/demo.apk" title="下载Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.6/demo.apk" title="下载Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
 					<li class="r"><a href="/SwipeDrawer_en/" title="Switch to English"><img src="/libs/images/Language-English.svg"></a></li>
 				</ul>
 			</div>
@@ -80,17 +80,18 @@
 					<li data-btn="A34"><span>scrollOuterDrag</span></li>
 					<li data-btn="A341"><span>autoLayout</span></li>
 					<li data-btn="A35"><span>shrinkRange</span></li>
-					<li data-btn="A36"><span>dragDamping<i></i></span></li>
+					<li data-btn="A36"><span>dragDamping</span></li>
 					<li data-btn="A37"><span>dragRange</span></li>
-					<li data-btn="A372"><span>leftDragRange<i></i></span></li>
-					<li data-btn="A373"><span>topDragRange<i></i></span></li>
-					<li data-btn="A374"><span>rightDragRange<i></i></span></li>
-					<li data-btn="A375"><span>bottomDragRange<i></i></span></li>
-					<li data-btn="A376"><span>leftOffset<i></i></span></li>
-					<li data-btn="A377"><span>topOffset<i></i></span></li>
-					<li data-btn="A378"><span>rightOffset<i></i></span></li>
-					<li data-btn="A379"><span>bottomOffset<i></i></span></li>
+					<li data-btn="A372"><span>leftDragRange</span></li>
+					<li data-btn="A373"><span>topDragRange</span></li>
+					<li data-btn="A374"><span>rightDragRange</span></li>
+					<li data-btn="A375"><span>bottomDragRange</span></li>
+					<li data-btn="A376"><span>leftOffset</span></li>
+					<li data-btn="A377"><span>topOffset</span></li>
+					<li data-btn="A378"><span>rightOffset</span></li>
+					<li data-btn="A379"><span>bottomOffset</span></li>
 					<li data-btn="A371"><span>dragSlop</span></li>
+					<li data-btn="A3711"><span>turnCancel<i></i></span></li>
 					<li data-btn="A38"><span>maxDragSize</span></li>
 					<li data-btn="A39"><span>duration</span></li>
 					<li data-btn="A40"><span>interpolator</span></li>
@@ -671,6 +672,13 @@
 					<ul>
 						<li>值类型为：<label>dip</label>，当拖拽距离大于<label>dragSlop</label>dip时才拦截事件</li>
 						<li>默认值为：<label>5</label>px</li>
+					</ul>
+					<br/><br/>
+					<h2 data-tab="A3711" id="turnCancel">turnCancel<em>注：最低版本需 >= 1.6</em></h2>
+					<p>回拽取消操作：<map data-preview-btn>View Preview</map><br><span data-preview-src="https://p.ssl.qhimg.com/t01531494c0fc6ccea7.gif"></span></p>
+					<ul>
+						<li>值类型为：<label>dip</label>，当拖拽达到打开或关闭距离时，回拽距离大于<label>turnCancel</label>时释放后会取消操作</li>
+						<li>默认值为：<label>10</label>px</li>
 					</ul>
 					<br/><br/>
 					<h2 data-tab="A38" id="maxDragSize">maxDragSize</h2>

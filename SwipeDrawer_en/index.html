@@ -26,7 +26,7 @@
 					<li><a href="/SwipeDrawer_en/logs.html" title="Update Logs">Logs</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/issues" title="Github Issues">Issues</a></li>
 					<li><a href="https://github.com/Leaqi/SwipeDrawer/" title="Github Project Code">Project Code</a></li>
-					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.5/demo.apk" title="Download Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
+					<li><a href="https://github.com/Leaqi/SwipeDrawer/releases/download/1.6/demo.apk" title="Download Demo"><img src="/libs/images/Download-Apk.svg"></a></li>
 					<li class="r"><a href="/SwipeDrawer/" title="切换中文版"><img src="/libs/images/Language-Chinese.svg"></a></li>
 				</ul>
 			</div>
@@ -75,7 +75,7 @@
 				<p>Add<label>SwipeDrawer</label>dependencies: </p>
 				<pre><code class="hljs">dependencies {
     ...
-    implementation <span class="hljs-string">&#x27;cn.Leaqi:SwipeDrawer:1.5&#x27;</span>
+    implementation <span class="hljs-string">&#x27;cn.Leaqi:SwipeDrawer:1.6&#x27;</span>
 }</code></pre>
 				<br/>
 				<p>Add<label>SwipeDrawer</label>to the layout file: </p>
@@ -478,9 +478,15 @@
 						</tr>
 						<tr>
 							<td>dragSlop</td>
-							<td>Drag intercept distance<br/>The event is intercepted only when the drag distance is greater than<label>dragSlop</label>dip<ins>Warn：Minimum version required >= 1.1</ins></td>
+							<td>Drag intercept distance<br/>The event is intercepted only when the drag distance is greater than<label>dragSlop</label><ins>Warn：Minimum version required >= 1.1</ins></td>
 							<td>dip</td>
-							<td>5</td>
+							<td>5px</td>
+						</tr>
+						<tr>
+							<td>turnCancel</td>
+							<td>Pull back to cancel operation<br/>When the drag reaches the open or closed distance, the operation will be canceled after releasing when the drag back distance is greater than <label>turnCancel</label><ins>Warn：Minimum version required >= 1.6</ins></td>
+							<td>dip</td>
+							<td>10px</td>
 						</tr>
 						<tr>
 							<td>maxDragSize</td>
@@ -812,6 +818,13 @@
 							<td>getDragSlop()</td>
 							<td>
 								<p>Get<label>dragSlop</label>attribute<ins>Warn：Minimum version required >= 1.1</ins></p>
+							</td>
+							<td>int</td>
+						</tr>
+						<tr>
+							<td>getTurnCancel()</td>
+							<td>
+								<p>Get<label>turnCancel</label>attribute<ins>Warn：Minimum version required >= 1.6</ins></p>
 							</td>
 							<td>int</td>
 						</tr>
@@ -1408,6 +1421,15 @@
 							<td>setDragSlop(int num)</td>
 							<td>
 								<p>Set<label>dragSlop</label>attribute<ins>Warn：Minimum version required >= 1.1</ins></p>
+							</td>
+							<td>
+								<p>num：<label>int</label>px</p>
+							</td>
+						</tr>
+						<tr>
+							<td>setTurnCancel(int num)</td>
+							<td>
+								<p>Set<label>turnCancel</label>attribute<ins>Warn：Minimum version required >= 1.6</ins></p>
 							</td>
 							<td>
 								<p>num：<label>int</label>px</p>
